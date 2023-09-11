@@ -1,7 +1,10 @@
 import adapter from '@sveltejs/adapter-static';
+import preprocess from 'svelte-preprocess';
 
 export default {
-    kit: {
+    preprocess: preprocess(),
+
+	kit: {
         adapter: adapter({
             pages: 'public_html',
             assets: 'public_html',
