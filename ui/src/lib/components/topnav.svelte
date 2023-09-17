@@ -9,6 +9,7 @@
         justify-content: space-between;
         align-items: center;
         margin: 1em 4em;
+        z-index: 100;
 
         img {
             max-width: 10%;
