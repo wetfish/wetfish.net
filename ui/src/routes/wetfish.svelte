@@ -4,31 +4,16 @@
         min-height: 100vh;
         background-repeat: no-repeat;
         background-size: cover;
-        padding-top: 150px;
-    }
-
-    .content {
-        padding-top: 200px;
+        padding-top: 350px;
     }
 </style>
 
 <script>
-    let sectionContent;
-
-    function handleScroll() {
-        const boundingBox = sectionContent.getBoundingClientRect();
-        sectionContent.style['mask-image'] =
-            `linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 1),
-                rgba(0, 0, 0, 1) ${((boundingBox.height + boundingBox.top) - 100) / 2}px,
-                transparent ${(boundingBox.height + boundingBox.top) - 100}px
-            )`;
-    }
+    import DisappearingContent from "$lib/components/DisappearingContent.svelte";
 </script>
 
 <section class="wetfish">
-    <div class="content" bind:this={sectionContent}>
+    <DisappearingContent>
         <div class="section-number">01</div>
         <h4>— What is Wetfish?</h4>
         <h2>A community of scientists, makers, and artists working together to inspire hope for a better world.</h2>
@@ -36,7 +21,5 @@
 
         <button>Join the Community</button>
         <button>Hire Us</button>
-    </div>
+    </DisappearingContent>
 </section>
-
-<svelte:window on:scroll={handleScroll} />
