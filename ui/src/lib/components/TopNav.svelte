@@ -13,6 +13,10 @@
 
         img {
             max-width: 10%;
+
+            &:hover {
+                animation: trippy 2s linear infinite;
+            }
         }
 
         .menu {
@@ -23,9 +27,18 @@
             padding: 0.1em 0.25em 0.3em 0.25em;
         }
     }
+
+    @keyframes trippy {
+        0% { filter: hue-rotate(0deg); }
+        50% { filter: hue-rotate(180deg); }
+        100% { filter: hue-rotate(360deg); }
+    }
 </style>
 
 <div class="top-nav">
-    <img src={logo} />
+    <a href="/" aria-label="Wetfish Home Page">
+        <img src={logo} alt="Wetfish Rainbow Logo "/>
+    </a>
+
     <div class="menu">≡</div>
 </div>
