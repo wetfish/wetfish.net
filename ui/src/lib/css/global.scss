@@ -27,20 +27,29 @@ html, body {
 }
 
 .section-number {
+    .number {
+        position: absolute;
+    }
+
     font-family: redhat;
     font-size: 200px;
     font-weight: 500;
+    opacity: 0.1;
+    height: 100px;
+    margin-left: -0.25em;
 }
 
 h1 {
     font-family: redhat;
     font-size: 62px;
+    margin: 0.1em 0;
 }
 
 h2 {
     font-family: redhat;
     font-size: 49px;
     font-weight: 500;
+    margin: 0.1em 0;
 }
 
 h3 {
@@ -48,6 +57,8 @@ h3 {
     font-size: 20px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
+    margin: 0;
+    margin-top: 1em;
 }
 
 h4 {
@@ -62,6 +73,11 @@ p {
     font-size: 24px;
 }
 
+.buttons {
+    display: flex;
+    gap: 1em;
+}
+
 button {
     background-color: transparent;
     border: 3px solid #2ECF9E;
@@ -69,5 +85,12 @@ button {
     color: #2ECF9E;
     font-family: satoshi;
     font-size: 24px;
+    font-weight: 1000;
+    min-width: 190px;
     padding: 0.7em 1.5em;
+
+    &.full {
+        background-color: #2ECF9E;
+        color: #fff;
+    }
 }
