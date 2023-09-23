@@ -1,10 +1,11 @@
-<style>
+<style lang="scss">
     .wetfish {
         background-image:url('$lib/images/bg-wetfish.png');
         min-height: 1080px;
         background-repeat: no-repeat;
         background-size: cover;
         padding-top: 250px;
+        overflow: hidden;
     }
 
     .content {
@@ -30,9 +31,12 @@
 
 <script>
     import DisappearingContent from "$lib/components/DisappearingContent.svelte";
+	import Laserfish from "$lib/components/Laserfish.svelte";
 </script>
 
 <section class="wetfish">
+    <Laserfish />
+
     <DisappearingContent>
         <div class="content">
             <div class="section-number">01</div>
