@@ -9,8 +9,8 @@
             `linear-gradient(
                 0deg,
                 rgba(0, 0, 0, 1),
-                rgba(0, 0, 0, 1) ${((boundingBox.height + boundingBox.top) - 200)}px,
-                transparent ${(boundingBox.height + boundingBox.top) - 100}px
+                rgba(0, 0, 0, 1) ${((boundingBox.height + boundingBox.top) - 244)}px,
+                transparent ${(boundingBox.height + boundingBox.top) - 122}px
             )`;
     }
 </script>

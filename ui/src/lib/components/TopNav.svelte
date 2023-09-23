@@ -8,11 +8,12 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        width: calc(100% - 8em);
         margin: 1em 4em;
         z-index: 100;
 
         img {
-            max-width: 10%;
+            height: 100px;
 
             &:hover {
                 animation: trippy 2s linear infinite;
