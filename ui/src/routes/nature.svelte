@@ -1,6 +1,6 @@
 <style>
     .nature {
-        background-image:url('$lib/assets/bg-nature.png');
+        background-image:url('$lib/images/bg-nature.png');
         min-height: 100vh;
         background-repeat: no-repeat;
         background-size: cover;

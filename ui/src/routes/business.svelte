@@ -1,6 +1,6 @@
 <style>
     .business {
-        background-image:url('$lib/assets/bg-business.jpg');
+        background-image:url('$lib/images/bg-business.jpg');
         min-height: 100vh;
         background-repeat: no-repeat;
         background-size: cover;

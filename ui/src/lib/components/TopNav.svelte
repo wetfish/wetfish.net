@@ -1,5 +1,5 @@
 <script>
-    import logo from '$lib/assets/wetfish-logo.png';
+    import logo from '$lib/images/wetfish-logo.png';
 </script>
 
 <style lang="scss">

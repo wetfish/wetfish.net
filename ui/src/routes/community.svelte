@@ -1,6 +1,6 @@
 <style>
     .community {
-        background-image:url('$lib/assets/bg-community.png');
+        background-image:url('$lib/images/bg-community.png');
         min-height: 100vh;
         background-repeat: no-repeat;
         background-size: cover;

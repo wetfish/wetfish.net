@@ -4,3 +4,70 @@ html, body {
     background: #010902;
     color: #fff;
 }
+
+@font-face {
+    font-family: 'clash';
+    src: url('$lib/fonts/ClashDisplay-Semibold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'redhat';
+    src: url('$lib/fonts/RedHatDisplay-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'satoshi';
+    src: url('$lib/fonts/Satoshi-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.section-number {
+    font-family: redhat;
+    font-size: 200px;
+    font-weight: 500;
+}
+
+h1 {
+    font-family: redhat;
+    font-size: 62px;
+}
+
+h2 {
+    font-family: redhat;
+    font-size: 49px;
+    font-weight: 500;
+}
+
+h3 {
+    font-family: clash;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+h4 {
+    font-family: clash;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+p {
+    font-family: satoshi;
+    font-size: 24px;
+}
+
+button {
+    background-color: transparent;
+    border: 3px solid #2ECF9E;
+    border-radius: 10px;
+    color: #2ECF9E;
+    font-family: satoshi;
+    font-size: 24px;
+    padding: 0.7em 1.5em;
+}
