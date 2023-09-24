@@ -1,9 +1,37 @@
-<style>
+<style lang="scss">
     .community {
         background-image:url('$lib/images/bg-community.png');
-        min-height: 100vh;
+        min-height: 1400;
         background-repeat: no-repeat;
         background-size: cover;
+        overflow: hidden;
+    }
+
+    .content {
+        margin: 200px 0;
+        display: flex;
+        justify-content: flex-end;
+
+        .text {
+            width: 30%;
+            margin-right: 24em;
+            padding: 4em 0;
+        }
+    }
+
+    h3 {
+        color: transparent;
+        background: linear-gradient(95.37deg, #7AA8F3 -2%, #88FF82 64%);
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+
+    p {
+        margin: 1em 0;
+    }
+
+    .buttons {
+        margin-top: 3em;
     }
 </style>
 
@@ -13,19 +41,25 @@
 
 <section class="community">
     <DisappearingContent>
-        <div class="section-number">02</div>
-        <h3>— The Community</h3>
-        <h1>The Best Internet on the Internet</h1>
+        <div class="content">
+            <div class="text">
+                <div class="section-number">02</div>
+                <h3>— The Community</h3>
+                <h1>The Best Internet on the Internet</h1>
 
-        <p>
-            Wetfish started in 2005 on IRC and has evolved into a network of open-source projects including a wiki, forum, file hosting, video streaming, and chat rooms.
-            It's a home grown, certified organic, mini-internet on the internet.
-        </p>
+                <p>
+                    Wetfish started in 2005 on IRC and has evolved into a network of open-source projects including a wiki, forum, file hosting, video streaming, and chat rooms.
+                    It's a home grown, certified organic, mini-internet on the internet.
+                </p>
 
-        <p>
-            Whether you're looking for someone to help give you advice on your next 3D printing project or just looking to blow off steam and laugh at funny memes, we've got you covered.
-        </p>
+                <p>
+                    Whether you're looking for someone to help give you advice on your next 3D printing project or just looking to blow off steam and laugh at funny memes, we've got you covered.
+                </p>
 
-        <button>Learn More About the Community</button>
+                <div class="buttons">
+                    <a class="button full" href="https://wet.fish/community">Learn More About the Community</a>
+                </div>
+            </div>
+        </div>
     </DisappearingContent>
 </section>
