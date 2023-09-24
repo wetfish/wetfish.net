@@ -25,14 +25,6 @@
         background-clip: text;
         -webkit-background-clip: text;
     }
-
-    p {
-        margin: 1em 0;
-    }
-
-    .buttons {
-        margin-top: 3em;
-    }
 </style>
 
 <script>
