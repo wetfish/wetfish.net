@@ -75,10 +75,10 @@ p {
 
 .buttons {
     display: flex;
-    gap: 1.5em;
+    gap: 1.75em;
 }
 
-button {
+.button {
     background-color: transparent;
     border: 3px solid #2ECF9E;
     border-radius: 10px;
@@ -88,9 +88,19 @@ button {
     font-weight: 1000;
     min-width: 190px;
     padding: 0.7em 1.5em;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+        color: #fff;
+    }
 
     &.full {
-        background-color: #2ECF9E;
+        background-color: RGBA(46, 207, 158, 0.25);
         color: #fff;
+
+        &:hover {
+            background-color: transparent;
+        }
     }
 }
