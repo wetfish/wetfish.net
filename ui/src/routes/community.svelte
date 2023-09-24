@@ -18,13 +18,6 @@
             padding: 4em 0;
         }
     }
-
-    h3 {
-        color: transparent;
-        background: linear-gradient(95.37deg, #7AA8F3 -2%, #88FF82 64%);
-        background-clip: text;
-        -webkit-background-clip: text;
-    }
 </style>
 
 <script>

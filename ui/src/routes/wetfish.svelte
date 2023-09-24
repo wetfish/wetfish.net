@@ -17,13 +17,6 @@
         color: #0EE5A3;
     }
 
-    h2 {
-        color: transparent;
-        background: linear-gradient(95.37deg, #7AA8F3 -2.07%, #88FF82 124.81%);
-        background-clip: text;
-        -webkit-background-clip: text;
-    }
-
     p {
         padding-right: 7em;
     }

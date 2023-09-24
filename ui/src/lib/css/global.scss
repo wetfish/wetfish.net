@@ -45,6 +45,14 @@ h1 {
     margin: 0.1em 0;
 }
 
+h2, h3 {
+    display: inline-block;
+    color: transparent;
+    background: linear-gradient(95.37deg, #7AA8F3 -4%, #88FF82 111%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
 h2 {
     font-family: redhat;
     font-size: 49px;
@@ -59,6 +67,8 @@ h3 {
     letter-spacing: 0.08em;
     margin: 0;
     margin-top: 1em;
+
+
 }
 
 h4 {
