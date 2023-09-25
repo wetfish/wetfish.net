@@ -12,7 +12,7 @@
         position: absolute;
         right: 50%;
         bottom: 120vh;
-        z-index: 2;
+        z-index: 0;
     }
 
     .content {
