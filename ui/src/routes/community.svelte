@@ -29,7 +29,7 @@
         <div class="content">
             <div class="text">
                 <div class="section-number">02</div>
-                <h3>— The Community</h3>
+                <h3>— Wetfish: Our Community Is...</h3>
                 <h1>The Best Internet on the Internet</h1>
 
                 <p>

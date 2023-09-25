@@ -45,19 +45,26 @@
         <div class="content">
             <div class="text">
                 <div class="section-number">03</div>
-                <h3>— Software Development</h3>
+                <h3>— Custom Projects for your Business</h3>
                 <h1>Making Your Dreams a Reality</h1>
 
                 <p>
-                    After years of working together on passion projects, the team behind Wetfish decided to incorporate as a software development agency. Since 2017 we've worked on projects for other companies including charities, podcasting, e-commerce platforms, and custom hardware for satellites.
+                    In 2017 the team behind Wetfish decided to incorporate as a Research & Development startup.
+                    Since then we've worked on projects ranging from charities and podcasting to aerospace.
                 </p>
 
                 <p>
-                    If you have a vision for a new project, but need talent to make that happen — we're here to help. When you hire Wetfish, you tap into decades of collective experience in everything from software application development, DevOps, and InfoSec to design, marketing, and branding.
+                    If you have a vision for a new project, but need talent to make that happen — we're here to help.
+                    When you hire Wetfish, you tap into decades of collective experience in everything from developing mobile & web applications, to CAD product design, and assembly of custom embedded Linux systems.
                 </p>
 
                 <p>
-                    If you need help maintaining or adding new features to your existing projects, we do that too. We will work with you to identify inefficiencies in your business operations and offer software solutions that help automate your workflow.
+                    If you're struggling to maintain or upgrade your existing projects — we'll help with that too.
+                    Our design team will work with you to create new user experiences and improve your marketing.
+                </p>
+
+                <p>
+                    Wetfish helps you identify inefficiencies in your business operations and builds custom software & hardware to automate your workflows.
                 </p>
 
                 <div class="buttons">
