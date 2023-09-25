@@ -4,7 +4,15 @@
         min-height: 1400px;
         background-repeat: no-repeat;
         background-size: cover;
+        position: relative;
+        overflow: hidden;
+    }
 
+    .globe {
+        position: absolute;
+        right: 50%;
+        bottom: 120vh;
+        z-index: 2;
     }
 
     .content {
@@ -25,9 +33,14 @@
 
 <script>
     import DisappearingContent from "$lib/components/DisappearingContent.svelte";
+    import Globe from "$lib/components/Globe.svelte";
 </script>
 
 <section class="business">
+    <div class="globe">
+        <Globe />
+    </div>
+
     <DisappearingContent>
         <div class="content">
             <div class="text">
