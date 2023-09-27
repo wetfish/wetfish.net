@@ -9,8 +9,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: calc(100% - 8em);
-        margin: 1em 4em;
+        width: calc(100% - 2em);
+        margin: 1em;
         z-index: 100;
 
         img {
@@ -20,6 +20,14 @@
                 animation: trippy 2s linear infinite;
             }
         }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .top-nav {
+            width: calc(100% - 8em);
+            margin: 1em 4em;
+        }
+
     }
 
     @keyframes trippy {

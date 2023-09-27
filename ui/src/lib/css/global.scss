@@ -85,9 +85,8 @@ p {
 }
 
 .buttons {
-    display: flex;
-    gap: 1.75em;
-    margin-top: 3em;
+    margin: 3em 0;
+    white-space: nowrap;
 }
 
 .button {
@@ -99,6 +98,7 @@ p {
     font-size: 24px;
     font-weight: 1000;
     min-width: 190px;
+    margin-right: 1em;
     padding: 0.7em 1.5em;
     text-align: center;
     text-decoration: none;

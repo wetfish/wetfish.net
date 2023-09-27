@@ -10,7 +10,7 @@
 
         img {
             position: absolute;
-            left: 36%;
+            left: 44%;
         }
 
         .laserfish {
@@ -23,12 +23,24 @@
 
         .base {
             top: 680px;
-            left: calc(36% - 163px);
+            left: calc(44% - 163px);
         }
     }
 
     .dodge {
         mix-blend-mode: color-dodge;
+    }
+
+    @media screen and (min-width: 1337) {
+        img {
+            position: absolute;
+            left: 36%;
+        }
+
+        .base {
+            top: 680px;
+            left: calc(36% - 163px);
+        }
     }
 </style>
 

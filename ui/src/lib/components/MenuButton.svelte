@@ -11,7 +11,14 @@
 
         &:hover {
             background-color: transparent;
+            animation: trippy 2s linear infinite;
         }
+    }
+
+    @keyframes trippy {
+        0% { backdrop-filter: hue-rotate(0deg); }
+        50% { backdrop-filter: hue-rotate(180deg); }
+        100% { backdrop-filter: hue-rotate(360deg); }
     }
 </style>
 

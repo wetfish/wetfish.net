@@ -4,21 +4,42 @@
         min-height: 1080px;
         background-repeat: no-repeat;
         background-size: cover;
-        padding-top: 250px;
+        padding-top: 125px;
         overflow: hidden;
-    }
-
-    .content {
-        max-width: 33%;
-        padding-left: 8em;
     }
 
     h3 {
         color: #0EE5A3;
     }
 
-    p {
-        padding-right: 7em;
+    .content {
+        padding: 0 1em 4em;
+    }
+
+    @media screen and (min-width: 1024px) {
+        .wetfish {
+            padding-top: 250px;
+        }
+
+        .content {
+            max-width: 50%;
+            padding-left: 4em;
+        }
+
+        p {
+            padding-right: 4em;
+        }
+    }
+
+    @media screen and (min-width: 1337px) {
+        .content {
+            max-width: 33%;
+            padding-left: 8em;
+        }
+
+        p {
+            padding-right: 7em;
+        }
     }
 </style>
 

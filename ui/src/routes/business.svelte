@@ -45,7 +45,7 @@
         <div class="content">
             <div class="text">
                 <div class="section-number">03</div>
-                <h3>— Custom Projects for your Business</h3>
+                <h3>— Custom Solutions for your Business</h3>
                 <h1>Making Your Dreams a Reality</h1>
 
                 <p>

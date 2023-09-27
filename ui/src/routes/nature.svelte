@@ -4,6 +4,7 @@
         min-height: 1400px;
         background-repeat: no-repeat;
         background-size: cover;
+        overflow: hidden;
     }
 
     .content {
@@ -46,7 +47,7 @@
                     </p>
 
                     <p>
-                        We believe that the perception of human technological progression vs nature is a false dichotomy.
+                        We believe the concept of human technological progress vs nature is a false dichotomy.
                         Instead, we're using modern technology to reconnect the public with natural areas and get more young people involved in land management.
                     </p>
                 </div>
