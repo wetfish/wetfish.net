@@ -1,6 +1,7 @@
 FROM docker.io/node:20 as builder
 
-WORKDIR ui
+COPY ./ui /ui
+WORKDIR /ui
 RUN npm install
 RUN npm run build
 
