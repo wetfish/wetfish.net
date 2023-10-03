@@ -1,0 +1,19 @@
+# version 3+ does different things re: networking from 2.x
+# mainly things to support swarms
+# aka things we don't need/want
+version: '2.4'
+services:
+  wetfish-corporate:
+    container_name: wetfish-corporate
+    # production: track "prod" tag on ghcr.io
+    image: ghcr.io/wetfish/wetfish.net:prod
+    # restart unless we stopped it manually
+    restart: unless-stopped
+    # normally behind centeral traefik defined in production-manifests/services/traefik
+    networks:
+      traefik-backend: {}
+
+networks:
+  # persistent, externally created
+  traefik-backend:
+    external: true
