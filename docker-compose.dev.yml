@@ -1,0 +1,15 @@
+# version 3+ does different things re: networking from 2.x
+# mainly things to support swarms
+# aka things we don't need/want
+version: '2.4'
+services:
+  wetfish-home:
+    container_name: wetfish-home
+    # for development, build the image
+    image: ghcr.io/wetfish/wetfish.net:dev
+    build: .
+    # restart unless we stopped it manually
+    restart: unless-stopped
+    # normally behind centeral traefik defined in production-manifests/services/traefik
+    ports:
+      - "127.0.0.1:31337:80"
