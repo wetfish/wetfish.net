@@ -3,8 +3,8 @@
 # aka things we don't need/want
 version: '2.4'
 services:
-  wetfish-corporate:
-    container_name: wetfish-corporate
+  wetfish-home:
+    container_name: wetfish-home
     # for development, build the image
     image: ghcr.io/wetfish/wetfish.net:dev
     build: .
