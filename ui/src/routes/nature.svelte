@@ -42,7 +42,7 @@
 
                 <div class="paragraphs">
                     <p>
-                        Despite our interest in computers and technology, many members of the Wetfish community are also passionate about nature conservation, permaculture, and homesteading.
+                        In addition to our interest in computers and technology, many members of the Wetfish community are also passionate about nature conservation, permaculture, and homesteading.
                         Our mission is to bring back an abundance of biodiversity by accelerating the restoration of entire ecosystems.
                     </p>
 
