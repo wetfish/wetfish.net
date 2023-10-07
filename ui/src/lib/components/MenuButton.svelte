@@ -34,6 +34,17 @@
     function toggleMenu() {
         menuStore.set(!menuIsOpen);
     }
+
+    function handleKeyUp(event) {
+        // Only process keyboard events when the menu is open
+        if(menuIsOpen) {
+            if(event.key === "Escape") {
+                menuStore.set(false);
+            }
+        }
+    }
 </script>
 
 <div class="menu-button" on:click={toggleMenu}>≡</div>
+
+<svelte:window on:keyup={handleKeyUp} />
