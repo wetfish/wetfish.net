@@ -12,7 +12,7 @@
         left: 0;
         right: 0;
         z-index: 1000;
-        padding: 1em 4em;
+        padding: 1em;
     }
 
     .wrapper {
@@ -24,12 +24,15 @@
     .links {
         font-family: satoshi;
         list-style: none;
-        line-height: 96px;
         align-self: center;
         margin: 0 auto;
+        padding: 0;
 
         .button {
-            font-size: 32px;
+            font-size: 21px;
+            margin: 0;
+            padding: 0.5em;
+            line-height: 3.2em;
 
             &:hover {
                 animation: trippy 2s linear infinite;
@@ -38,15 +41,35 @@
     }
 
     .button-wrap {
-        height: 105px;
-        display: flex;
-        align-items: center;
+        position: fixed;
+        top: 44px;
+        right: 16px;
     }
 
     @keyframes trippy {
         0% { backdrop-filter: hue-rotate(0deg); }
         50% { backdrop-filter: hue-rotate(180deg); }
         100% { backdrop-filter: hue-rotate(360deg); }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .menu {
+            padding: 1em 4em;
+        }
+
+        .links {
+            .button {
+                font-size: 32px;
+                padding: 0.7em 1.5em;
+            }
+        }
+
+        .button-wrap {
+            position: unset;
+            height: 105px;
+            display: flex;
+            align-items: center;
+        }
     }
 </style>
 
