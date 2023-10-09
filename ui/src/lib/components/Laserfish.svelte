@@ -5,43 +5,88 @@
 </script>
 
 <style lang="scss">
-    .laserfish-wrapper {
-        position: relative;
+    .dodge {
+       mix-blend-mode: color-dodge;
+    }
 
+    .laserfish-wrapper {
         img {
             position: absolute;
-            left: 44%;
+            z-index: 0;
         }
 
         .laserfish {
-            top: -95px;
+            bottom: 98px;
+            width: 500px;
         }
 
         .background {
-            top: 125px;
+            bottom: 200px;
+            width: 500px;
         }
 
         .base {
-            top: 680px;
-            left: calc(44% - 163px);
+            bottom: 0px;
+            left: -118px;
+            width: 800px;
         }
     }
 
-    .dodge {
-        mix-blend-mode: color-dodge;
+    @media screen and (min-width: 600px) {
+        .laserfish-wrapper {
+            .laserfish {
+                bottom: 110px;
+                left: 100px;
+                width: 800px;
+            }
+
+            .background {
+                bottom: 250px;
+                left: 100px;
+                width: 800px;
+            }
+
+            .base {
+                bottom: 0px;
+                left: 38px;
+                width: 1000px;
+            }
+        }
     }
 
-    @media screen and (min-width: 1337) {
-        img {
-            position: absolute;
-            left: 36%;
-        }
+    @media screen and (min-width: 1024px) {
+        .laserfish-wrapper {
+            .laserfish {
+                bottom: 180px;
+                left: 44%;
+                width: auto;
+            }
 
-        .base {
-            top: 680px;
-            left: calc(36% - 163px);
+            .background {
+                bottom: 450px;
+                left: 44%;
+                width: auto;
+            }
+
+            .base {
+                left: calc(44% - 163px);
+                width: auto;
+            }
         }
     }
+
+    /*
+    @media screen and (min-width: 1337px) {
+        .laserfish-wrapper {
+            img {
+                left: 36%;
+            }
+
+            .base {
+                left: calc(36% - 163px);
+            }
+        }
+    }*/
 </style>
 
 <div class="laserfish-wrapper">

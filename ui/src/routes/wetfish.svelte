@@ -6,6 +6,7 @@
         background-size: cover;
         padding-top: 125px;
         overflow: hidden;
+        position: relative;
     }
 
     h3 {
@@ -13,7 +14,7 @@
     }
 
     .content {
-        padding: 0 1em 4em;
+        padding: 0 1em 25em;
     }
 
     @media screen and (min-width: 1024px) {
@@ -24,6 +25,7 @@
         .content {
             max-width: 50%;
             padding-left: 4em;
+            padding-bottom: 0;
         }
 
         p {
@@ -49,8 +51,6 @@
 </script>
 
 <section class="wetfish">
-    <Laserfish />
-
     <DisappearingContent>
         <div class="content">
 
@@ -65,4 +65,6 @@
             </div>
         </div>
     </DisappearingContent>
+
+    <Laserfish />
 </section>

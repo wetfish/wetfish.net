@@ -41,7 +41,7 @@ html, body {
 
 h1 {
     font-family: redhat;
-    font-size: 62px;
+    font-size: 49px;
     margin: 0.1em 0;
 }
 
@@ -55,14 +55,14 @@ h2, h3 {
 
 h2 {
     font-family: redhat;
-    font-size: 49px;
+    font-size: 24px;
     font-weight: 500;
     margin: 0.1em 0;
 }
 
 h3 {
     font-family: clash;
-    font-size: 20px;
+    font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin: 0;
@@ -80,13 +80,12 @@ h4 {
 
 p {
     font-family: satoshi;
-    font-size: 24px;
+    font-size: 21px;
     margin: 1em 0;
 }
 
 .buttons {
-    margin: 3em 0;
-    white-space: nowrap;
+    margin: 1em 0;
 }
 
 .button {
@@ -102,6 +101,8 @@ p {
     padding: 0.7em 1.5em;
     text-align: center;
     text-decoration: none;
+    white-space: nowrap;
+    line-height: 4em;
 
     &:hover {
         color: #fff;
@@ -116,3 +117,26 @@ p {
         }
     }
 }
+
+@media screen and (min-width: 1024px) {
+    h1 {
+        font-size: 62px;
+    }
+
+    h2 {
+        font-size: 49px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    h4 {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 24px;
+    }
+}
+

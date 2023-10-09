@@ -24,7 +24,14 @@
     }
 </script>
 
-<div bind:this={content}>
+<style>
+    .disappearing-content {
+        position: relative;
+        z-index: 1;
+    }
+</style>
+
+<div bind:this={content} class="disappearing-content">
     <slot />
 </div>
 
