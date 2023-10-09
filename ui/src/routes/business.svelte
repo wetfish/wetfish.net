@@ -10,24 +10,47 @@
 
     .globe {
         position: absolute;
-        right: 50%;
-        bottom: 120vh;
+        right: 60%;
+        bottom: 30vh;
         z-index: 0;
     }
 
     .content {
-        padding: 200px 8em;
+        padding: 150px 0em;
         display: flex;
         justify-content: flex-start;
 
         .text {
-            width: 44%;
-            padding: 4em 0;
+            padding: 1em;
         }
     }
 
-    h1, h3, p {
-        width: 80%;
+    @media screen and (min-width: 768px) {
+        .globe {
+            bottom: 60vh;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .globe {
+            right: 50%;
+            bottom: 120vh;
+        }
+
+        .content {
+            padding: 200px 8em;
+            display: flex;
+            justify-content: flex-start;
+
+            .text {
+                width: 44%;
+                padding: 4em 0;
+            }
+        }
+
+        h1, h3, p {
+            width: 80%;
+        }
     }
 </style>
 
