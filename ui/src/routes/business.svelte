@@ -38,9 +38,25 @@
         }
 
         .content {
+            .text {
+                width: 60%;
+                padding: 4em 2em;
+            }
+        }
+
+        h1, h3, p {
+            width: 80%;
+        }
+    }
+
+    @media screen and (min-width: 1600px) {
+        .globe {
+            right: 50%;
+            bottom: 120vh;
+        }
+
+        .content {
             padding: 200px 8em;
-            display: flex;
-            justify-content: flex-start;
 
             .text {
                 width: 44%;
@@ -51,6 +67,7 @@
         h1, h3, p {
             width: 80%;
         }
+
     }
 </style>
 

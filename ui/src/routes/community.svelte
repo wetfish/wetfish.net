@@ -22,9 +22,18 @@
             margin: 200px 0;
 
             .text {
+                width: 50%;
+                margin: 0 auto;
+                padding: 4em 0;
+            }
+        }
+    }
+
+    @media screen and (min-width: 1600px) {
+        .content {
+            .text {
                 width: 30%;
                 margin-right: 24em;
-                padding: 4em 0;
             }
         }
     }

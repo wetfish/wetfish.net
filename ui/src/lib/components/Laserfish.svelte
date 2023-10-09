@@ -74,19 +74,6 @@
             }
         }
     }
-
-    /*
-    @media screen and (min-width: 1337px) {
-        .laserfish-wrapper {
-            img {
-                left: 36%;
-            }
-
-            .base {
-                left: calc(36% - 163px);
-            }
-        }
-    }*/
 </style>
 
 <div class="laserfish-wrapper">
