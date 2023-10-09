@@ -1,31 +1,47 @@
 <style lang="scss">
     .nature {
         background-image:url('$lib/images/bg-nature.png');
-        min-height: 1400px;
         background-repeat: no-repeat;
         background-size: cover;
         overflow: hidden;
     }
 
     .content {
-        padding: 700px 16em 8em;
-        display: flex;
-        justify-content: flex-start;
+        padding: 400px 1em 0;
+    }
 
-        .text {
-            width: 80%;
+    @media screen and (min-width: 768px) {
+        .content {
+            padding: 500px 2em 0;
         }
     }
 
-    .paragraphs {
-        display: flex;
-        gap: 2em;
+    @media screen and (min-width: 1024px) {
+        .content {
+            padding: 500px 8em 0;
+        }
+
+        .paragraphs {
+            display: flex;
+            gap: 2em;
+        }
     }
 
-    h1 {
-        width: 60%;
-    }
+    @media screen and (min-width: 1600px) {
+        .nature {
+            min-height: 1400px;
+        }
 
+        .content {
+            padding: 700px 16em 8em;
+            display: flex;
+            justify-content: flex-start;
+
+            .text {
+                width: 80%;
+            }
+        }
+    }
 </style>
 
 <script>
@@ -38,7 +54,7 @@
             <div class="text">
                 <div class="section-number">04</div>
                 <h3>— Nature Conservation</h3>
-                <h1>Technology Healing Mother Nature</h1>
+                <h1>Technology Healing<br>Mother Nature</h1>
 
                 <div class="paragraphs">
                     <p>
