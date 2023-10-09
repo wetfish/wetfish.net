@@ -29,10 +29,7 @@
         padding: 0;
 
         .button {
-            font-size: 21px;
-            margin: 0;
-            padding: 0.5em;
-            line-height: 3.2em;
+            padding: 0.5em 0.75em;
 
             &:hover {
                 animation: trippy 2s linear infinite;

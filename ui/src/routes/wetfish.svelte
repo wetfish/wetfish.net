@@ -33,7 +33,7 @@
         }
     }
 
-    @media screen and (min-width: 1337px) {
+    @media screen and (min-width: 1600px) {
         .content {
             max-width: 33%;
             padding-left: 8em;

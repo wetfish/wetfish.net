@@ -8,14 +8,24 @@
     }
 
     .content {
-        margin: 200px 0;
+        margin: 150px 0;
         display: flex;
         justify-content: flex-end;
 
         .text {
-            width: 30%;
-            margin-right: 24em;
-            padding: 4em 0;
+            padding: 1em;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .content {
+            margin: 200px 0;
+
+            .text {
+                width: 30%;
+                margin-right: 24em;
+                padding: 4em 0;
+            }
         }
     }
 </style>

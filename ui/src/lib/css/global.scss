@@ -94,15 +94,14 @@ p {
     border-radius: 10px;
     color: #2ECF9E;
     font-family: satoshi;
-    font-size: 24px;
+    font-size: 19px;
     font-weight: 1000;
-    min-width: 190px;
     margin-right: 1em;
+    margin-bottom: 0.5em;
     padding: 0.7em 1.5em;
     text-align: center;
     text-decoration: none;
-    white-space: nowrap;
-    line-height: 4em;
+    display: inline-block;
 
     &:hover {
         color: #fff;
@@ -115,6 +114,12 @@ p {
         &:hover {
             background-color: transparent;
         }
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .button {
+        font-size: 21px;
     }
 }
 
@@ -136,6 +141,10 @@ p {
     }
 
     p {
+        font-size: 24px;
+    }
+
+    .button {
         font-size: 24px;
     }
 }
