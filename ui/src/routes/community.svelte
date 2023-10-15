@@ -1,7 +1,7 @@
 <style lang="scss">
     .community {
-        background-image:url('$lib/images/bg-community.png');
         min-height: 1400;
+        background-image:url('$lib/images/bg-community.png');
         background-repeat: no-repeat;
         background-size: cover;
         overflow: hidden;

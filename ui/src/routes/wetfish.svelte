@@ -1,7 +1,8 @@
 <style lang="scss">
     .wetfish {
-        background-image:url('$lib/images/bg-wetfish.png');
         min-height: 1080px;
+        background-image:url('$lib/images/bg-wetfish.png');
+        background-position: right;
         background-repeat: no-repeat;
         background-size: cover;
         padding-top: 125px;

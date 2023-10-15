@@ -1,6 +1,7 @@
 <style lang="scss">
     .nature {
         background-image:url('$lib/images/bg-nature.png');
+        background-position: left;
         background-repeat: no-repeat;
         background-size: cover;
         overflow: hidden;

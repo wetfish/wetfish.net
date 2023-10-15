@@ -1,7 +1,8 @@
 <style lang="scss">
     .business {
-        background-image:url('$lib/images/bg-business.jpg');
         min-height: 1400px;
+        background-image:url('$lib/images/bg-business.jpg');
+        background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
