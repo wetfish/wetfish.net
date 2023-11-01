@@ -86,7 +86,7 @@
             </li>
 
             <li>
-                <a class="button" href="https://wet.fish/conservation">Learn About Nature Conservation</a>
+                <a class="button" href="https://wet.fish/nature">Learn About Nature Conservation</a>
             </li>
         </ul>
 
