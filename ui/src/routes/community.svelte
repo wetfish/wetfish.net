@@ -5,6 +5,28 @@
         background-repeat: no-repeat;
         background-size: cover;
         overflow: hidden;
+        position: relative;
+    }
+
+    .content-background {
+        mix-blend-mode: multiply;
+
+        img {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .mobile {
+            width: 100%;
+            height: 125%;
+        }
+
+        .desktop {
+            display: none;
+        }
     }
 
     .content {
@@ -30,6 +52,21 @@
     }
 
     @media screen and (min-width: 1600px) {
+        .content-background {
+            .mobile {
+                display: none;
+            }
+
+            .desktop {
+                display: block;
+                height: 150%;
+                width: 60%;
+                right: 15em;
+                top: -25%;
+                left: auto;
+            }
+        }
+
         .content {
             .text {
                 width: 30%;
@@ -37,13 +74,30 @@
             }
         }
     }
+
+    @media screen and (min-width: 2048px) {
+        .content-background {
+            .desktop {
+                width: 55%;
+                right: 15em;
+            }
+        }
+    }
 </style>
 
 <script>
     import DisappearingContent from "$lib/components/DisappearingContent.svelte";
+    import contentBackgroundMobile from '$lib/images/bg-community-home-mobile-swoop.svg';
+    import contentBackgroundDesktop from '$lib/images/bg-community-home-desktop-swoop.svg';
 </script>
 
 <section class="community">
+    <div class="content-background">
+
+        <img class="mobile" src="{contentBackgroundMobile}">
+        <img class="desktop" src="{contentBackgroundDesktop}">
+    </div>
+
     <DisappearingContent>
         <div class="content">
             <div class="text">
