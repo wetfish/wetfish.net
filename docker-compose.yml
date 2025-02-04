@@ -1,13 +1,13 @@
 # version 3+ does different things re: networking from 2.x
 # mainly things to support swarms
 # aka things we don't need/want
-version: '2.4'
+version: "2.4"
 services:
   wetfish-home:
     container_name: wetfish-home
 
     # production: track "prod" tag on ghcr.io
-    image: ghcr.io/wetfish/wetfish.net:prod
+    image: ghcr.io/wetfish/wetfish.net:${ENV_TAG}
 
     # enable watchtowers to automatically pull changes
     labels:
