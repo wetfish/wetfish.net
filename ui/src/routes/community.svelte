@@ -87,15 +87,14 @@
 
 <script>
     import DisappearingContent from "$lib/components/DisappearingContent.svelte";
-    import contentBackgroundMobile from '$lib/images/bg-community-home-mobile-swoop.svg';
-    import contentBackgroundDesktop from '$lib/images/bg-community-home-desktop-swoop.svg';
+    import swoopMobile from '$lib/images/swoop-home-mobile.svg';
+    import swoopDesktop from '$lib/images/swoop-home-desktop.svg';
 </script>
 
 <section class="community">
     <div class="content-background">
-
-        <img class="mobile" src="{contentBackgroundMobile}">
-        <img class="desktop" src="{contentBackgroundDesktop}">
+        <img class="mobile" src="{swoopMobile}">
+        <img class="desktop" src="{swoopDesktop}">
     </div>
 
     <DisappearingContent>
@@ -115,7 +114,7 @@
                 </p>
 
                 <div class="buttons">
-                    <a class="button full" href="https://wet.fish/community">Learn More About the Community</a>
+                    <a class="button full" href="/community">Learn More About the Community</a>
                 </div>
             </div>
         </div>

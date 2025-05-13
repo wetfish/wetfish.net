@@ -102,19 +102,37 @@ p {
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    cursor: pointer;
 
     &:hover {
         color: #fff;
     }
 
-    &.full {
-        background-color: RGBA(46, 207, 158, 0.25);
+    &.wide {
+        width: 250px;
+    }
+
+    &.dark {
+        background-color: rgba(0, 0, 0, 0.3);
         color: #fff;
 
         &:hover {
             background-color: transparent;
         }
     }
+
+    &.full {
+        background-color: rgba(46, 207, 158, 0.25);
+        color: #fff;
+
+        &:hover {
+            background-color: transparent;
+        }
+    }
+}
+
+.hidden {
+    display: none;
 }
 
 @media screen and (min-width: 600px) {

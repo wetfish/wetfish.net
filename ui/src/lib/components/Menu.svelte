@@ -1,5 +1,10 @@
 <script>
     import MenuButton from "$lib/components/MenuButton.svelte";
+    import { menuStore } from '$lib/store.js';
+
+    function closeMenu() {
+        menuStore.set(false);
+    }
 </script>
 
 <style lang="scss">
@@ -74,11 +79,11 @@
     <div class="wrapper">
         <ul class="links">
             <li>
-                <a class="button full" href="mailto:BusinessRelations@wetfish.net">Hire Us</a>
+                <a class="button full" href="/" on:click={closeMenu}>Home</a>
             </li>
 
             <li>
-                <a class="button" href="https://wet.fish/community">Join the Community</a>
+                <a class="button" href="/community" on:click={closeMenu}>Join the Community</a>
             </li>
 
             <li>

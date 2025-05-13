@@ -61,7 +61,7 @@
             <p>Wetfish operates an open-source network of projects that bring people together without sacrificing privacy or freedom. We are the internet, distilled.</p>
 
             <div class="buttons">
-                <a class="button" href="https://wet.fish/community">Join the Community</a>
+                <a class="button" href="/community">Join the Community</a>
                 <a class="button full" href="mailto:BusinessRelations@wetfish.net">Hire Us</a>
             </div>
         </div>
