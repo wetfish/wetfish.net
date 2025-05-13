@@ -69,6 +69,7 @@
 
         &.four {
             margin-top: 15em;
+            flex-direction: column;
         }
     }
 
@@ -149,8 +150,6 @@
             }
 
             &.four {
-                flex-direction: column;
-
                 .text {
                     width: 80%;
                 }
@@ -420,38 +419,50 @@
             </div>
 
             <div class="projects">
-                <div class="project">
-                    <div class="blob-4">
-                        <img src="/content/community-wiki.png" />
+                <a href="https://wiki.wetfish.net/wiki">
+                    <div class="project">
+                        <div class="blob-4">
+                            <img src="/content/community-wiki.png" />
+                        </div>
+                        <div class="button wide dark">Wiki</div>
                     </div>
-                    <div class="button wide dark">Wiki</div>
-                </div>
+                </a>
 
-                <div class="project">
-                    <div class="blob-7">
-                        <img src="/content/community-forums.png" />
+
+                <a href="https://wetfishonline.com/">
+                    <div class="project">
+                        <div class="blob-7">
+                            <img src="/content/community-forums.png" />
+                        </div>
+                        <div class="button wide dark">Forums</div>
                     </div>
-                    <div class="button wide dark">Forums</div>
-                </div>
+                </a>
 
-                <div class="project">
-                    <img src="/content/community-chat.png" />
-                    <div class="button wide dark">Chat Network</div>
-                </div>
 
-                <div class="project">
-                    <div class="blob-3">
-                        <img src="/content/community-ai.jpg" />
+                <a href="https://wiki.wetfish.net/community">
+                    <div class="project">
+                        <img src="/content/community-chat.png" />
+                        <div class="button wide dark">Chat Network</div>
                     </div>
-                    <div class="button wide dark">AI / Machine Learning</div>
-                </div>
+                </a>
 
-                <div class="project">
-                    <div class="blob-7">
-                        <img src="/content/community-hamster-wheel.jpg" />
+                <a href="https://wiki.wetfish.net/ai">
+                    <div class="project">
+                        <div class="blob-3">
+                            <img src="/content/community-ai.jpg" />
+                        </div>
+                        <div class="button wide dark">AI / Machine Learning</div>
                     </div>
-                    <div class="button wide dark">Human Hamster Wheel</div>
-                </div>
+                </a>
+
+                <a href="https://wiki.wetfish.net/hamster-wheel">
+                    <div class="project">
+                        <div class="blob-7">
+                            <img src="/content/community-hamster-wheel.jpg" />
+                        </div>
+                        <div class="button wide dark">Human Hamster Wheel</div>
+                    </div>
+                </a>
             </div>
         </div>
     </DisappearingContent>
