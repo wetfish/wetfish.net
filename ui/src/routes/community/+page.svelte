@@ -23,18 +23,18 @@
             width: 100vw;
 
             &.one {
-                max-height: 100vh;
-                top: 8em;
+                top: 150px;
+                max-height: 800px;
             }
 
             &.two {
-                top: 130vh;
-                max-height: 105vh;
+                top: 1100px;
+                max-height: 900px;
             }
 
             &.three {
+                top: 2200px;
                 width: 105vw;
-                top: 250vh;
             }
         }
 
@@ -56,7 +56,7 @@
         }
 
         &.two {
-            margin-top: 15em;
+            margin-top: 12em;
         }
 
         &.three {
@@ -126,6 +126,55 @@
         clip-path: url(#blob-10);
     }
 
+    @media screen and (min-width: 400px) {
+        .content {
+            &.one {
+                margin-top: 9em;
+            }
+
+            &.two {
+                margin-top: 17em;
+            }
+
+            &.three {
+                margin-top: 20em;
+            }
+        }
+    }
+
+    @media screen and (min-width: 600px) {
+        .content {
+            &.one {
+                margin-top: 16em;
+            }
+
+            &.two {
+                margin-top: 28em;
+            }
+
+            &.three {
+                margin-top: 30em;
+            }
+        }
+    }
+
+    @media screen and (min-width: 800px) {
+        .content {
+            &.one {
+                margin-top: 18em;
+            }
+
+            &.two {
+                margin-top: 34em;
+            }
+
+            &.three {
+                margin-top: 48em;
+            }
+        }
+    }
+
+
     @media screen and (min-width: 1024px) {
         .content-background {
             .mobile {
@@ -134,7 +183,7 @@
 
             .desktop {
                 display: block;
-                height: 150%;
+                height: 125%;
                 width: 100vw;
                 left: auto;
             }
@@ -149,7 +198,33 @@
                 padding: 4em 0;
             }
 
+            &.one {
+                margin-top: 25px;
+
+                .text {
+                    margin-left: 18%;
+                }
+            }
+
+            &.two {
+                margin-top: 100px;
+
+                .text {
+                    margin-left: 27%;
+                }
+            }
+
+            &.three {
+                margin-top: 100px;
+
+                .text {
+                    margin-left: 32%;
+                }
+            }
+
             &.four {
+                margin-top: 50px;
+
                 .text {
                     width: 80%;
                 }
@@ -160,7 +235,7 @@
             display: grid;
             grid-gap: 20px;
             grid-template-rows: 400px;
-            grid-template-columns: 350px 350px 350px;
+            grid-template-columns: 350px 350px;
             padding: 10px;
             margin: 0 auto;
             margin-bottom: 10em;
@@ -174,10 +249,58 @@
         }
     }
 
+    @media screen and (min-width: 1200px) {
+        .content-background {
+            .desktop {
+                height: 130%;
+            }
+        }
+
+        .content {
+            &.two {
+                margin-top: 25px;
+            }
+
+            &.three {
+                margin-top: 25px;
+
+                .text {
+                    margin-left: 34%;
+                }
+            }
+
+            &.four {
+                margin-top: 25px;
+            }
+        }
+
+        .projects {
+            grid-template-columns: 350px 350px 350px;
+        }
+    }
+
     @media screen and (min-width: 1600px) {
+        .content-background {
+            .desktop {
+                height: 150%;
+            }
+        }
+
         .content {
             .text {
-                width: 30%;
+                width: 40%;
+            }
+
+            &.one {
+                .text {
+                    margin-left: 25%;
+                }
+            }
+
+            &.three {
+                .text {
+                    margin-left: 40%;
+                }
             }
 
             &.four {
@@ -202,8 +325,14 @@
     function setActiveValue(value) {
         activeValue = value;
 
-        const buttonPosition = document.getElementById(value).offsetTop;
-        window.scrollTo({top: buttonPosition - 75});
+        // Wait 10ms to allow the content to be re-rendered before scrolling
+        setTimeout(() => {
+            const buttonPosition = document.getElementById(value).offsetTop;
+            const windowHeight = window.innerHeight;
+
+            // Adjust the scroll position to center the content on the screen
+            window.scrollTo({top: buttonPosition - (windowHeight * 0.33)});
+        }, 10);
     }
 </script>
 
