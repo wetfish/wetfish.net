@@ -51,7 +51,6 @@
             padding: 1em;
         }
 
-
         &.one {
             margin-top: 8em;
         }
@@ -134,7 +133,7 @@
 
             .desktop {
                 display: block;
-                height: 100%;
+                height: 150%;
                 width: 100vw;
                 left: auto;
             }
@@ -148,6 +147,31 @@
                 margin: 0 auto;
                 padding: 4em 0;
             }
+
+            &.four {
+                flex-direction: column;
+
+                .text {
+                    width: 80%;
+                }
+            }
+        }
+
+        .projects {
+            display: grid;
+            grid-gap: 20px;
+            grid-template-rows: 400px;
+            grid-template-columns: 350px 350px 350px;
+            padding: 10px;
+            margin: 0 auto;
+            margin-bottom: 10em;
+        }
+
+        .project {
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
     }
 
@@ -155,6 +179,12 @@
         .content {
             .text {
                 width: 30%;
+            }
+
+            &.four {
+                .text {
+                    width: 50%;
+                }
             }
         }
     }
@@ -387,40 +417,40 @@
                 <p>
                     Check out some of our featured projects!
                 </p>
+            </div>
 
-                <div class="projects">
-                    <div class="project">
-                        <div class="blob-3">
-                            <img src="/content/community-ai.jpg" />
-                        </div>
-                        <div class="button wide dark">AI / Machine Learning</div>
+            <div class="projects">
+                <div class="project">
+                    <div class="blob-4">
+                        <img src="/content/community-wiki.png" />
                     </div>
+                    <div class="button wide dark">Wiki</div>
+                </div>
 
-                    <div class="project">
-                        <div class="blob-7">
-                            <img src="/content/community-hamster-wheel.jpg" />
-                        </div>
-                        <div class="button wide dark">Human Hamster Wheel</div>
+                <div class="project">
+                    <div class="blob-7">
+                        <img src="/content/community-forums.png" />
                     </div>
+                    <div class="button wide dark">Forums</div>
+                </div>
 
-                    <div class="project">
-                        <div class="blob-4">
-                            <img src="/content/community-wiki.png" />
-                        </div>
-                        <div class="button wide dark">Wiki</div>
-                    </div>
+                <div class="project">
+                    <img src="/content/community-chat.png" />
+                    <div class="button wide dark">Chat Network</div>
+                </div>
 
-                    <div class="project">
-                        <div class="blob-7">
-                            <img src="/content/community-forums.png" />
-                        </div>
-                        <div class="button wide dark">Forums</div>
+                <div class="project">
+                    <div class="blob-3">
+                        <img src="/content/community-ai.jpg" />
                     </div>
+                    <div class="button wide dark">AI / Machine Learning</div>
+                </div>
 
-                    <div class="project">
-                        <img src="/content/community-chat.png" />
-                        <div class="button wide dark">Chat Network</div>
+                <div class="project">
+                    <div class="blob-7">
+                        <img src="/content/community-hamster-wheel.jpg" />
                     </div>
+                    <div class="button wide dark">Human Hamster Wheel</div>
                 </div>
             </div>
         </div>
