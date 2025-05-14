@@ -1,4 +1,4 @@
-FROM docker.io/node:20 as builder
+FROM docker.io/node:20 AS builder
 
 COPY ./ui /ui
 WORKDIR /ui
