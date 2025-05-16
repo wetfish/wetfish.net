@@ -109,8 +109,8 @@
                 </p>
 
                 <div class="buttons">
-                    <a class="button" href="https://wet.fish/business">Learn More About Our Work</a>
-                    <a class="button full" href="mailto:BusinessRelations@wetfish.net">Hire Us</a>
+                    <a class="button" href="/business">Learn More About Our Work</a>
+                    <a class="button full" href="mailto:business@wetfish.net">Hire Us</a>
                 </div>
             </div>
         </div>

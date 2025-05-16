@@ -87,7 +87,7 @@
             </li>
 
             <li>
-                <a class="button" href="https://wet.fish/business">Learn About Our Business</a>
+                <a class="button" href="/business" on:click={closeMenu}>Learn About Our Business</a>
             </li>
 
             <li>

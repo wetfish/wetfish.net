@@ -313,7 +313,6 @@
 </style>
 
 <script>
-	import { writable } from 'svelte/store';
     import DisappearingContent from "$lib/components/DisappearingContent.svelte";
     import swoopMobile1 from '$lib/images/swoop-community-mobile-1.svg';
     import swoopMobile2 from '$lib/images/swoop-community-mobile-2.svg';
