@@ -114,22 +114,14 @@
 
 <script>
     import DisappearingContent from "$lib/components/DisappearingContent.svelte";
+    import Accordion from '$lib/components/Accordion.svelte';
     import Globe from "$lib/components/Globe.svelte";
 
-    let activeValue = $state('tech-dev');
-
-    function setActiveValue(value) {
-        activeValue = value;
-
-        // Wait 10ms to allow the content to be re-rendered before scrolling
-        setTimeout(() => {
-            const buttonPosition = document.getElementById(value).offsetTop;
-            const windowHeight = window.innerHeight;
-
-            // Adjust the scroll position to center the content on the screen
-            window.scrollTo({top: buttonPosition - (windowHeight * 0.33)});
-        }, 10);
-    }
+    const accordionOptions = [
+        {id: 'techdev', title: 'Software & Hardware Development'},
+        {id: 'bizdev', title: 'Business Development'},
+        {id: 'design', title: 'Design'},
+    ];
 </script>
 
 <section class="business">
@@ -169,79 +161,51 @@
                 <h3>— Our Services</h3>
                 <h1>What We Can Do For You</h1>
 
-                <div
-                    id="tech-dev"
-                    class="button wide"
-                    class:dark={activeValue !== 'tech-dev'}
-                    class:full={activeValue === 'tech-dev'}
-                    onclick={() => setActiveValue('tech-dev')}
-                >
-                    Software & Hardware Development
-                </div>
+                <Accordion options={accordionOptions}>
+                    {#snippet techdev()}
+                        <p>
+                            Wetfish builds custom software and hardware products for startups & small businesses.
+                        </p>
 
-                {#if activeValue === 'tech-dev'}
-                    <p>
-                        Wetfish builds custom software and hardware products for startups & small businesses.
-                    </p>
+                        <p>
+                            New businesses are always solving new problems, that's the perfect opprotunity to develop custom web and mobile applications for helping startups manage their unique supply chains and production processes.
+                        </p>
 
-                    <p>
-                        New businesses are always solving new problems, that's the perfect opprotunity to develop custom web and mobile applications for helping startups manage their unique supply chains and production processes.
-                    </p>
+                        <p>
+                            Augment your team with our knowledgable staff.
+                        </p>
 
-                    <p>
-                        Augment your team with our knowledgable staff.
-                    </p>
+                        <p>
+                            When you hire Wetfish you're tapping into a talented group of developers, designers, and experienced project managers who will work with you every step of the product development process.
+                        </p>
+                    {/snippet}
 
-                    <p>
-                        When you hire Wetfish you're tapping into a talented group of developers, designers, and experienced project managers who will work with you every step of the product development process.
-                    </p>
-                {/if}
+                    {#snippet bizdev()}
+                        <p>
+                            Already run an established business? We can help streamline and improve your operations.
+                            Wetfish builds custom software and hardware products that automate tedious jobs like collecting information and generating reports.
+                            If your staff have more important things to be working on, Wetfish can save your organization thousands of hours of time that would otherwise be spent on data entry and spreadsheets.
+                        </p>
 
-                <div
-                    id="biz-dev"
-                    class="button wide"
-                    class:dark={activeValue !== 'biz-dev'}
-                    class:full={activeValue === 'biz-dev'}
-                    onclick={() => setActiveValue('biz-dev')}
-                >
-                    Business Development
-                </div>
+                        <p>
+                            Build new features into your existing products.
+                            When you hire Wetfish you're tapping into a talented group of developers, designers, and experienced project managers who have worked together on projects ranging from charities to aerospace.
+                        </p>
+                    {/snippet}
 
-                {#if activeValue === 'biz-dev'}
-                    <p>
-                        Already run an established business? We can help streamline and improve your operations.
-                        Wetfish builds custom software and hardware products that automate tedious jobs like collecting information and generating reports.
-                        If your staff have more important things to be working on, Wetfish can save your organization thousands of hours of time that would otherwise be spent on data entry and spreadsheets.
-                    </p>
+                    {#snippet design()}
+                        <p>
+                            Wetfish creates custom designs for web, print, and physical products.
+                            We've created product labels for breweries, routers for satellites, and built a food truck from scratch.
+                        </p>
 
-                    <p>
-                        Build new features into your existing products.
-                        When you hire Wetfish you're tapping into a talented group of developers, designers, and experienced project managers who have worked together on projects ranging from charities to aerospace.
-                    </p>
-                {/if}
-
-                <div
-                    id="design"
-                    class="button wide"
-                    class:dark={activeValue !== 'design'}
-                    class:full={activeValue === 'design'}
-                    onclick={() => setActiveValue('design')}
-                >
-                    Design
-                </div>
-
-                {#if activeValue === 'design'}
-                    <p>
-                        Wetfish creates custom designs for web, print, and physical products.
-                        We've created product labels for breweries, routers for satellites, and built a food truck from scratch.
-                    </p>
-
-                    <ul>
-                        <li>Custom user experience for your web or mobile application</li>
-                        <li>Develop new marketing and branding material</li>
-                        <li>Create a product from scratch using 3D CAD modeling</li>
-                    </ul>
-                {/if}
+                        <ul>
+                            <li>Custom user experience for your web or mobile application</li>
+                            <li>Develop new marketing and branding material</li>
+                            <li>Create a product from scratch using 3D CAD modeling</li>
+                        </ul>
+                    {/snippet}
+                </Accordion>
             </div>
         </div>
 

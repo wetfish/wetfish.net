@@ -314,25 +314,18 @@
 
 <script>
     import DisappearingContent from "$lib/components/DisappearingContent.svelte";
+    import Accordion from '$lib/components/Accordion.svelte';
     import swoopMobile1 from '$lib/images/swoop-community-mobile-1.svg';
     import swoopMobile2 from '$lib/images/swoop-community-mobile-2.svg';
     import swoopMobile3 from '$lib/images/swoop-community-mobile-3.svg';
     import swoopDesktop from '$lib/images/swoop-community-desktop.svg';
 
-    let activeValue = $state('post-scarcity');
-
-    function setActiveValue(value) {
-        activeValue = value;
-
-        // Wait 10ms to allow the content to be re-rendered before scrolling
-        setTimeout(() => {
-            const buttonPosition = document.getElementById(value).offsetTop;
-            const windowHeight = window.innerHeight;
-
-            // Adjust the scroll position to center the content on the screen
-            window.scrollTo({top: buttonPosition - (windowHeight * 0.33)});
-        }, 10);
-    }
+    const accordionOptions = [
+        {id: 'postscarcity', title: 'Post-Scarcity'},
+        {id: 'curiosity', title: 'Curiosity'},
+        {id: 'sovereignty', title: 'Sovereignty'},
+        {id: 'sustainability', title: 'Sustainability'},
+    ];
 </script>
 
 <section class="community">
@@ -427,106 +420,58 @@
                 <h3>— Our Values</h3>
                 <h1>We're better together!</h1>
 
-                <div class="values">
-                    <div
-                        id="post-scarcity"
-                        class="button wide"
-                        class:dark={activeValue !== 'post-scarcity'}
-                        class:full={activeValue === 'post-scarcity'}
-                        onclick={() => setActiveValue('post-scarcity')}
-                    >
-                        Post-Scarcity
-                    </div>
+                <Accordion options={accordionOptions}>
+                    {#snippet postscarcity()}
+                        <p>
+                            We already have the technology to provide abundant food, water, and shelter to the entire planet.
+                            For a brief moment, file sharing in the early 2000s gave us a glimpse of what true abundance looks like.
+                            Then it was systematically dismantled and replaced with inefficient, centralized, rent-seeking "solutions" that spy on us.
+                        </p>
 
-                    {#if activeValue === 'post-scarcity'}
-                        <div class="value post-scarcity">
-                            <p>
-                                We already have the technology to provide abundant food, water, and shelter to the entire planet.
-                                For a brief moment, file sharing in the early 2000s gave us a glimpse of what true abundance looks like.
-                                Then it was systematically dismantled and replaced with inefficient, centralized, rent-seeking "solutions" that spy on us.
-                            </p>
+                        <p>
+                            Our incentives have been corrupted by greed.
+                            We're told that everything is a limited resource to be exploited.
+                            People are encouraged to destroy the planet for profit.
+                            Governments are bought and paid for by 10 corporations that control everything.
+                        </p>
 
-                            <p>
-                                Our incentives have been corrupted by greed.
-                                We're told that everything is a limited resource to be exploited.
-                                People are encouraged to destroy the planet for profit.
-                                Governments are bought and paid for by 10 corporations that control everything.
-                            </p>
+                        <p>
+                            If you had abundant food, water, and shelter would you still work a meaningless job?
+                        </p>
+                    {/snippet}
 
-                            <p>
-                                If you had abundant food, water, and shelter would you still work a meaningless job?
-                            </p>
-                        </div>
-                    {/if}
+                    {#snippet curiosity()}
+                        <p>
+                            Imagine if we lived in a world where our primary incentive was curiosity instead of greed.
+                            What would you do with your life if you didn't need to sell your time in exchange for food and rent?
+                            What amazing art, music, and scientific research are we missing out on by not letting people explore their curiosity?
+                        </p>
+                    {/snippet}
 
-                    <div
-                        id="curiosity"
-                        class="button wide"
-                        class:dark={activeValue !== 'curiosity'}
-                        class:full={activeValue === 'curiosity'}
-                        onclick={() => setActiveValue('curiosity')}
-                    >
-                        Curiosity
-                    </div>
+                    {#snippet sovereignty()}
+                        <p>
+                            It's important to have control over the technology that we use, otherwise it will be used to control us.
+                            We need to be able to audit the data we are sharing with 3rd parties and design systems that prevent data collection entirely.
+                        </p>
 
-                    {#if activeValue === 'curiosity'}
-                        <div class="value curiosity">
-                            <p>
-                                Imagine if we lived in a world where our primary incentive was curiosity instead of greed.
-                                What would you do with your life if you didn't need to sell your time in exchange for food and rent?
-                                What amazing art, music, and scientific research are we missing out on by not letting people explore their curiosity?
-                            </p>
-                        </div>
-                    {/if}
+                        <p>
+                            That's why all Wetfish projects are open-source and completely Ad-free.
+                            Advertisements spy on us, corrupt our media, and disconnect us from reality.
+                            Unlike most other websites, Wetfish's servers are entirely subsidized by the software & hardware development work we do.
+                        </p>
+                    {/snippet}
 
-                    <div
-                        id="sovereignty"
-                        class="button wide"
-                        class:dark={activeValue !== 'sovereignty'}
-                        class:full={activeValue === 'sovereignty'}
-                        onclick={() => setActiveValue('sovereignty')}
-                    >
-                        Sovereignty
-                    </div>
+                    {#snippet sustainability()}
+                        <p>
+                            Economic growth at all costs is a failed model that is destroying our home, planet Earth.
+                            Without a sustainable society there won't be anything left for our children and grandchildren.
+                        </p>
 
-                    {#if activeValue === 'sovereignty'}
-                        <div class="value sovereignty">
-                            <p>
-                                It's important to have control over the technology that we use, otherwise it will be used to control us.
-                                We need to be able to audit the data we are sharing with 3rd parties and design systems that prevent data collection entirely.
-                            </p>
-
-                            <p>
-                                That's why all Wetfish projects are open-source and completely Ad-free.
-                                Advertisements spy on us, corrupt our media, and disconnect us from reality.
-                                Unlike most other websites, Wetfish's servers are entirely subsidized by the software & hardware development work we do.
-                            </p>
-                        </div>
-                    {/if}
-
-                    <div
-                        id="sustainability"
-                        class="button wide"
-                        class:dark={!activeValue !== 'sustainability'}
-                        class:full={activeValue === 'sustainability'}
-                        onclick={() => setActiveValue('sustainability')}
-                    >
-                        Sustainability
-                    </div>
-
-                    {#if activeValue === 'sustainability'}
-                        <div class="value sustainability">
-                            <p>
-                                Economic growth at all costs is a failed model that is destroying our home, planet Earth.
-                                Without a sustainable society there won't be anything left for our children and grandchildren.
-                            </p>
-
-                            <p>
-                                Wetfish is involved in the management of several properties across the US and is building a decentralized network of perennial food forests.
-                            </p>
-                        </div>
-                    {/if}
-                </div>
+                        <p>
+                            Wetfish is involved in the management of several properties across the US and is building a decentralized network of perennial food forests.
+                        </p>
+                    {/snippet}
+                </Accordion>
             </div>
         </div>
 
@@ -556,7 +501,6 @@
                     </div>
                 </a>
 
-
                 <a href="https://wetfishonline.com/">
                     <div class="project">
                         <div class="blob-7">
@@ -565,7 +509,6 @@
                         <div class="button wide dark">Forums</div>
                     </div>
                 </a>
-
 
                 <a href="https://wiki.wetfish.net/community">
                     <div class="project">
