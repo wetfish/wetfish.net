@@ -79,15 +79,15 @@
     <div class="wrapper">
         <ul class="links">
             <li>
-                <a class="button full" href="/" on:click={closeMenu}>Home</a>
+                <a class="button full" href="/" onclick={closeMenu}>Home</a>
             </li>
 
             <li>
-                <a class="button" href="/community" on:click={closeMenu}>Join the Community</a>
+                <a class="button" href="/community" onclick={closeMenu}>Join the Community</a>
             </li>
 
             <li>
-                <a class="button" href="/business" on:click={closeMenu}>Learn About Our Business</a>
+                <a class="button" href="/business" onclick={closeMenu}>Learn About Our Business</a>
             </li>
 
             <li>

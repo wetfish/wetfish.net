@@ -116,7 +116,7 @@
     import DisappearingContent from "$lib/components/DisappearingContent.svelte";
     import Globe from "$lib/components/Globe.svelte";
 
-    let activeValue = 'tech-dev';
+    let activeValue = $state('tech-dev');
 
     function setActiveValue(value) {
         activeValue = value;
@@ -174,7 +174,7 @@
                     class="button wide"
                     class:dark={activeValue !== 'tech-dev'}
                     class:full={activeValue === 'tech-dev'}
-                    on:click={() => setActiveValue('tech-dev')}
+                    onclick={() => setActiveValue('tech-dev')}
                 >
                     Software & Hardware Development
                 </div>
@@ -202,7 +202,7 @@
                     class="button wide"
                     class:dark={activeValue !== 'biz-dev'}
                     class:full={activeValue === 'biz-dev'}
-                    on:click={() => setActiveValue('biz-dev')}
+                    onclick={() => setActiveValue('biz-dev')}
                 >
                     Business Development
                 </div>
@@ -225,7 +225,7 @@
                     class="button wide"
                     class:dark={activeValue !== 'design'}
                     class:full={activeValue === 'design'}
-                    on:click={() => setActiveValue('design')}
+                    onclick={() => setActiveValue('design')}
                 >
                     Design
                 </div>

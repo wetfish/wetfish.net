@@ -319,7 +319,7 @@
     import swoopMobile3 from '$lib/images/swoop-community-mobile-3.svg';
     import swoopDesktop from '$lib/images/swoop-community-desktop.svg';
 
-    let activeValue = 'post-scarcity';
+    let activeValue = $state('post-scarcity');
 
     function setActiveValue(value) {
         activeValue = value;
@@ -433,7 +433,7 @@
                         class="button wide"
                         class:dark={activeValue !== 'post-scarcity'}
                         class:full={activeValue === 'post-scarcity'}
-                        on:click={() => setActiveValue('post-scarcity')}
+                        onclick={() => setActiveValue('post-scarcity')}
                     >
                         Post-Scarcity
                     </div>
@@ -464,7 +464,7 @@
                         class="button wide"
                         class:dark={activeValue !== 'curiosity'}
                         class:full={activeValue === 'curiosity'}
-                        on:click={() => setActiveValue('curiosity')}
+                        onclick={() => setActiveValue('curiosity')}
                     >
                         Curiosity
                     </div>
@@ -484,7 +484,7 @@
                         class="button wide"
                         class:dark={activeValue !== 'sovereignty'}
                         class:full={activeValue === 'sovereignty'}
-                        on:click={() => setActiveValue('sovereignty')}
+                        onclick={() => setActiveValue('sovereignty')}
                     >
                         Sovereignty
                     </div>
@@ -509,7 +509,7 @@
                         class="button wide"
                         class:dark={!activeValue !== 'sustainability'}
                         class:full={activeValue === 'sustainability'}
-                        on:click={() => setActiveValue('sustainability')}
+                        onclick={() => setActiveValue('sustainability')}
                     >
                         Sustainability
                     </div>

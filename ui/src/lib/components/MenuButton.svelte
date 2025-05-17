@@ -45,6 +45,6 @@
     }
 </script>
 
-<div class="menu-button" on:click={toggleMenu}>≡</div>
+<div class="menu-button" onclick={toggleMenu}>≡</div>
 
-<svelte:window on:keyup={handleKeyUp} />
+<svelte:window onkeyup={handleKeyUp} />

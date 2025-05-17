@@ -1,5 +1,10 @@
-<script>
-    let content;
+<script lang="ts">
+    interface Props {
+        children?: import('svelte').Snippet;
+    }
+
+    let { children }: Props = $props();
+    let content = $state();
 
     // TODO: For best performance only change styles on the content when it is visible on the page?
     function handleScroll() {
@@ -32,7 +37,7 @@
 </style>
 
 <div bind:this={content} class="disappearing-content">
-    <slot />
+    {@render children?.()}
 </div>
 
-<svelte:window on:scroll={handleScroll} on:resize={handleScroll} />
+<svelte:window onscroll={handleScroll} onresize={handleScroll} />
