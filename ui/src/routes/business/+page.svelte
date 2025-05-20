@@ -1,19 +1,26 @@
 <style lang="scss">
     .business {
-        min-height: 1400px;
-        background-image:url('$lib/images/bg-business.jpg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
         position: relative;
         overflow: hidden;
     }
 
+    .background {
+        position: absolute;
+        width: 100%;
+        min-height: 1200px;
+        background-image:url('$lib/images/bg-business.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: -315px 0px;
+        transform: rotate(180deg);
+    }
+
     .globe {
         position: absolute;
-        right: 60%;
-        bottom: 30vh;
+        right: 65%;
+        top: 100px;
         z-index: 0;
+        transform: rotate(-30deg);
     }
 
     .content {
@@ -31,17 +38,13 @@
     }
 
     @media screen and (min-width: 768px) {
-        .globe {
-            bottom: 60vh;
+        .background {
+            min-height: 1500px;
+            background-position: -250px 25px;
         }
     }
 
     @media screen and (min-width: 1024px) {
-        .globe {
-            right: 50%;
-            bottom: 120vh;
-        }
-
         .content {
             .text {
                 width: 60%;
@@ -55,16 +58,11 @@
     }
 
     @media screen and (min-width: 1600px) {
-        .globe {
-            right: 50%;
-            bottom: 120vh;
-        }
-
         .content {
             padding: 200px 8em;
 
             .text {
-                width: 44%;
+                width: 50%;
                 padding: 4em 0;
             }
         }
@@ -79,6 +77,7 @@
 <script>
     import DisappearingContent from "$lib/components/DisappearingContent.svelte";
     import Accordion from '$lib/components/Accordion.svelte';
+    import Blob from '$lib/components/Blob.svelte';
     import Globe from "$lib/components/Globe.svelte";
 
     const accordionOptions = [
@@ -89,6 +88,7 @@
 </script>
 
 <section class="business">
+    <div class="background"></div>
     <div class="globe">
         <Globe />
     </div>
@@ -183,43 +183,43 @@
             <div class="projects">
                 <a href="https://wiki.wetfish.net/wiki">
                     <div class="project">
-                        <div class="blob-4">
-                            <img src="/content/community-wiki.png" />
-                        </div>
+                        <Blob type="4">
+                            <img src="/content/community-wiki.png" alt="A screenshot of the Wetfish Community Wiki" />
+                        </Blob>
                         <div class="button wide dark">Wiki</div>
                     </div>
                 </a>
 
                 <a href="https://wetfishonline.com/">
                     <div class="project">
-                        <div class="blob-7">
-                            <img src="/content/community-forums.png" />
-                        </div>
+                        <Blob type="7">
+                            <img src="/content/community-forums.png" alt="Pixel art avatars from the Wetfish Forums" />
+                        </Blob>
                         <div class="button wide dark">Forums</div>
                     </div>
                 </a>
 
                 <a href="https://wiki.wetfish.net/community">
                     <div class="project">
-                        <img src="/content/community-chat.png" />
+                        <img src="/content/community-chat.png" alt="Logos of open source chat programs" />
                         <div class="button wide dark">Chat Network</div>
                     </div>
                 </a>
 
                 <a href="https://wiki.wetfish.net/ai">
                     <div class="project">
-                        <div class="blob-3">
-                            <img src="/content/community-ai.jpg" />
-                        </div>
+                        <Blob type="3">
+                            <img src="/content/community-ai.jpg" alt="A desktop computer with a graphics card on fire, representing AI" />
+                        </Blob>
                         <div class="button wide dark">AI / Machine Learning</div>
                     </div>
                 </a>
 
                 <a href="https://wiki.wetfish.net/hamster-wheel">
                     <div class="project">
-                        <div class="blob-7">
-                            <img src="/content/community-hamster-wheel.jpg" />
-                        </div>
+                        <Blob type="7">
+                            <img src="/content/community-hamster-wheel.jpg" alt="A woman standing inside of a human sized hamster wheel" />
+                        </Blob>
                         <div class="button wide dark">Human Hamster Wheel</div>
                     </div>
                 </a>

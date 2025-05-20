@@ -1,7 +1,8 @@
 <script lang="ts">
     import TopNav from '$lib/components/TopNav.svelte';
     import Menu from '$lib/components/Menu.svelte';
-    import { menuStore } from '$lib/store.js';
+    import Blobs from '$lib/components/Blobs.svelte';
+	import { menuStore } from '$lib/store.js';
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
@@ -20,4 +21,7 @@
 {/if}
 
 <TopNav />
+
 {@render children?.()}
+
+<Blobs />

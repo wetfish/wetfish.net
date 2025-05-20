@@ -1,7 +1,3 @@
-<style lang="scss">
-
-</style>
-
 <script>
 	let { options, ...sections } = $props();
     let activeValue = $state(options[0].id);

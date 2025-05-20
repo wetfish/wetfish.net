@@ -4,7 +4,7 @@
     }
 
     let { children }: Props = $props();
-    let content = $state();
+    let content: HTMLElement = $state();
 
     // TODO: For best performance only change styles on the content when it is visible on the page?
     function handleScroll() {
