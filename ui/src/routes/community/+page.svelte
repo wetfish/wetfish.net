@@ -73,19 +73,6 @@
         }
     }
 
-    .projects {
-        margin-top: 1em;
-    }
-
-    .project {
-        margin-bottom: 1em;
-        text-align: center;
-
-        img {
-            max-width: 100%;
-        }
-    }
-
     .blob-1 {
         clip-path: url(#blob-1);
     }
@@ -226,26 +213,10 @@
                 margin-top: 50px;
 
                 .text {
+                    padding-bottom: 0;
                     width: 80%;
                 }
             }
-        }
-
-        .projects {
-            display: grid;
-            grid-gap: 20px;
-            grid-template-rows: 400px;
-            grid-template-columns: 350px 350px;
-            padding: 10px;
-            margin: 0 auto;
-            margin-bottom: 10em;
-        }
-
-        .project {
-            height: 350px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
     }
 
@@ -272,10 +243,6 @@
             &.four {
                 margin-top: 25px;
             }
-        }
-
-        .projects {
-            grid-template-columns: 350px 350px 350px;
         }
     }
 
@@ -330,10 +297,10 @@
 
 <section class="community">
     <div class="content-background">
-        <img class="mobile one" src="{swoopMobile1}">
-        <img class="mobile two" src="{swoopMobile2}">
-        <img class="mobile three" src="{swoopMobile3}">
-        <img class="desktop" src="{swoopDesktop}">
+        <img class="mobile one" src="{swoopMobile1}" alt="Dark transparent background">
+        <img class="mobile two" src="{swoopMobile2}" alt="Dark transparent background">
+        <img class="mobile three" src="{swoopMobile3}" alt="Dark transparent background">
+        <img class="desktop" src="{swoopDesktop}" alt="Dark transparent background">
     </div>
 
     <div class="blobs">
@@ -495,7 +462,7 @@
                 <a href="https://wiki.wetfish.net/wiki">
                     <div class="project">
                         <div class="blob-4">
-                            <img src="/content/community-wiki.png" />
+                            <img src="/content/community-wiki.png" alt="A screenshot of the Wetfish Community Wiki" />
                         </div>
                         <div class="button wide dark">Wiki</div>
                     </div>
@@ -504,7 +471,7 @@
                 <a href="https://wetfishonline.com/">
                     <div class="project">
                         <div class="blob-7">
-                            <img src="/content/community-forums.png" />
+                            <img src="/content/community-forums.png" alt="Pixel art avatars from the Wetfish Forums" />
                         </div>
                         <div class="button wide dark">Forums</div>
                     </div>
@@ -512,7 +479,7 @@
 
                 <a href="https://wiki.wetfish.net/community">
                     <div class="project">
-                        <img src="/content/community-chat.png" />
+                        <img src="/content/community-chat.png" alt="Logos of open source chat programs" />
                         <div class="button wide dark">Chat Network</div>
                     </div>
                 </a>
@@ -520,7 +487,7 @@
                 <a href="https://wiki.wetfish.net/ai">
                     <div class="project">
                         <div class="blob-3">
-                            <img src="/content/community-ai.jpg" />
+                            <img src="/content/community-ai.jpg" alt="A desktop computer with a graphics card on fire, representing AI" />
                         </div>
                         <div class="button wide dark">AI / Machine Learning</div>
                     </div>
@@ -529,7 +496,7 @@
                 <a href="https://wiki.wetfish.net/hamster-wheel">
                     <div class="project">
                         <div class="blob-7">
-                            <img src="/content/community-hamster-wheel.jpg" />
+                            <img src="/content/community-hamster-wheel.jpg" alt="A woman standing inside of a human sized hamster wheel" />
                         </div>
                         <div class="button wide dark">Human Hamster Wheel</div>
                     </div>

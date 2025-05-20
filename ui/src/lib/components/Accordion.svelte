@@ -21,7 +21,7 @@
 </script>
 
 {#each options as option}
-    <div
+    <button
         id={option.id}
         class="button wide"
         class:dark={activeValue !== option.id}
@@ -29,7 +29,7 @@
         onclick={() => setActiveValue(option.id)}
     >
         {option.title}
-    </div>
+    </button>
 
     {#if activeValue === option.id}
         {@render sections[option.id]()}

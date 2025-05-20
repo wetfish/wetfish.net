@@ -30,19 +30,6 @@
         }
     }
 
-    .projects {
-        margin-top: 1em;
-    }
-
-    .project {
-        margin-bottom: 1em;
-        text-align: center;
-
-        img {
-            max-width: 100%;
-        }
-    }
-
     @media screen and (min-width: 768px) {
         .globe {
             bottom: 60vh;
@@ -64,29 +51,6 @@
 
         h1, h3, p {
             width: 80%;
-        }
-
-        .projects {
-            display: grid;
-            grid-gap: 20px;
-            grid-template-rows: 400px;
-            grid-template-columns: 350px 350px;
-            padding: 10px;
-            margin: 0 auto;
-            margin-bottom: 10em;
-        }
-
-        .project {
-            height: 350px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-    }
-
-    @media screen and (min-width: 1200px) {
-        .projects {
-            grid-template-columns: 350px 350px 350px;
         }
     }
 
@@ -118,9 +82,9 @@
     import Globe from "$lib/components/Globe.svelte";
 
     const accordionOptions = [
-        {id: 'techdev', title: 'Software & Hardware Development'},
-        {id: 'bizdev', title: 'Business Development'},
-        {id: 'design', title: 'Design'},
+        {id: 'techdev', title: 'Software Development'},
+        {id: 'bizdev', title: 'Business Automation'},
+        {id: 'design', title: 'Design & Branding'},
     ];
 </script>
 
