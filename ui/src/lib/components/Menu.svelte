@@ -42,6 +42,10 @@
         }
     }
 
+    li {
+        margin: 0;
+    }
+
     .button-wrap {
         position: fixed;
         top: 44px;

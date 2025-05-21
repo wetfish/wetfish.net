@@ -62,7 +62,7 @@
 
             <div class="buttons">
                 <a class="button" href="/community">Join the Community</a>
-                <a class="button full" href="mailto:business@wetfish.net">Hire Us</a>
+                <a class="button full" href="/business">Our Portfolio</a>
             </div>
         </div>
     </DisappearingContent>

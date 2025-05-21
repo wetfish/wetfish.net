@@ -52,7 +52,11 @@
         }
 
         &.one {
-            margin-top: 8em;
+            margin-top: 7em;
+
+            .button {
+                margin-top: 0.5em;
+            }
         }
 
         &.two {
@@ -76,7 +80,7 @@
     @media screen and (min-width: 400px) {
         .content {
             &.one {
-                margin-top: 9em;
+                margin-top: 7em;
             }
 
             &.two {
@@ -275,6 +279,8 @@
                     Wetfish started in 2005 as an IRC channel and Imageboard and has evolved into a self-hosted network of open-source projects including a wiki, forum, file hosting, video streaming, and chat rooms.
                     Our mission is to use technology to help people connect with each other and empower small groups of dedicated people to change the world.
                 </p>
+
+                <a class="button full" href="https://wiki.wetfish.net/community">Join the Community</a>
             </div>
         </div>
 
