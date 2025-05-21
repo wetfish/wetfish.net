@@ -1,3 +1,7 @@
+<svelte:head>
+    <title>Business Automation & Software Development Services — Wetfish</title>
+</svelte:head>
+
 <style lang="scss">
     .business {
         position: relative;

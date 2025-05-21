@@ -1,3 +1,7 @@
+<svelte:head>
+    <title>Cyberpunk Internet Community — Wetfish</title>
+</svelte:head>
+
 <style lang="scss">
     .community {
         min-height: 1400;
