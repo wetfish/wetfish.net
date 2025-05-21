@@ -205,4 +205,10 @@ p, ul, li {
     .projects {
         grid-template-columns: 375px 375px 375px;
     }
+
+    .button {
+        &.wide {
+            width: 80%;
+        }
+    }
 }

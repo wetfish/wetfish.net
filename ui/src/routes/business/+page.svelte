@@ -4,15 +4,37 @@
         overflow: hidden;
     }
 
-    .background {
-        position: absolute;
-        width: 100%;
-        min-height: 1200px;
-        background-image:url('$lib/images/bg-business.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: -315px 0px;
-        transform: rotate(180deg);
+    .content-background {
+        .header {
+            position: absolute;
+            width: 100%;
+            min-height: 1200px;
+            background-image: url('$lib/images/bg-business.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: -315px 0px;
+            transform: rotate(180deg);
+        }
+
+        .gradient {
+            position: absolute;
+            width: 100%;
+            min-height: 1200px;
+            background-image: linear-gradient(0deg,#010902ff 0%, #01090200 100%);
+        }
+
+        .blue-cloud {
+            position: absolute;
+            top: 1050px;
+            width: 100%;
+        }
+
+        .purple-cloud {
+            position: absolute;
+            top: 2100px;
+            right: 0;
+            width: 125%;
+        }
     }
 
     .globe {
@@ -24,7 +46,6 @@
     }
 
     .content {
-        padding: 150px 0em;
         display: flex;
         justify-content: flex-start;
 
@@ -32,22 +53,96 @@
             padding: 1em;
         }
 
+        &.one {
+            padding-top: 150px;
+        }
+
+        &.two {
+            padding-top: 0;
+        }
+
         &.three {
             flex-direction: column;
         }
     }
 
+    @media screen and (min-width: 400px) {
+        .content-background {
+            .blue-cloud {
+                top: 980px;
+                width: 85%;
+            }
+
+            .purple-cloud {
+                top: 1900px;
+            }
+        }
+    }
+
+    @media screen and (min-width: 600px) {
+        .content-background {
+            .blue-cloud {
+                top: 740px;
+                width: 75%
+            }
+
+            .purple-cloud {
+                top: 1600px;
+                width: 100%;
+            }
+        }
+    }
+
     @media screen and (min-width: 768px) {
-        .background {
-            min-height: 1500px;
-            background-position: -250px 25px;
+        .content-background {
+            .header {
+                min-height: 1500px;
+                background-position: -250px 25px;
+            }
+
+            .gradient {
+                min-height: 1500px;
+            }
+
+            .blue-cloud {
+                top: 750px;
+                width: 65%
+            }
+
+            .purple-cloud {
+                top: 1700px;
+                width: 90%;
+            }
+        }
+
+        .content {
+            .text {
+                width: 80%;
+                padding: 4em 2em;
+            }
+
+            &.two {
+                justify-content: flex-end;
+            }
         }
     }
 
     @media screen and (min-width: 1024px) {
+        .content-background {
+            .blue-cloud {
+                top: 1000px;
+                width: 50%
+            }
+
+            .purple-cloud {
+                top: 2000px;
+                width: 75%;
+            }
+        }
+
         .content {
             .text {
-                width: 60%;
+                width: 70%;
                 padding: 4em 2em;
             }
         }
@@ -57,13 +152,68 @@
         }
     }
 
+    @media screen and (min-width: 1200px) {
+        .content {
+            &.three {
+                h1, h3, .section-number {
+                    margin-left: 20%;
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: 1300px) {
+        .content {
+            &.three {
+                h1, h3, .section-number {
+                    margin-left: 5%;
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: 1400px) {
+        .content-background {
+            .blue-cloud {
+                top: 900px;
+                width: 50%
+            }
+
+            .purple-cloud {
+                top: 1900px;
+                width: 60%;
+            }
+        }
+
+        .content {
+            .text {
+                width: 60%;
+            }
+
+            &.three {
+                h1, h3, .section-number {
+                    margin-left: 10%;
+                }
+            }
+        }
+
+        h1, h3 {
+            width: 100%;
+        }
+    }
+
     @media screen and (min-width: 1600px) {
         .content {
-            padding: 200px 8em;
+            padding: 200px 0 0 8em;
 
             .text {
-                width: 50%;
                 padding: 4em 0;
+            }
+
+            &.three {
+                h1, h3, .section-number {
+                    margin-left: 20%;
+                }
             }
         }
 
@@ -79,6 +229,8 @@
     import Accordion from '$lib/components/Accordion.svelte';
     import Blob from '$lib/components/Blob.svelte';
     import Globe from "$lib/components/Globe.svelte";
+    import blueCloud from '$lib/images/cloud-blue.png';
+    import purpleCloud from '$lib/images/cloud-purple.png';
 
     const accordionOptions = [
         {id: 'techdev', title: 'Software Development'},
@@ -88,7 +240,12 @@
 </script>
 
 <section class="business">
-    <div class="background"></div>
+    <div class="content-background">
+        <div class="header"></div>
+        <div class="gradient"></div>
+        <img class="blue-cloud" src="{blueCloud}" alt="Blue nebula cloud background">
+        <img class="purple-cloud" src="{purpleCloud}" alt="Purple nebula cloud background">
+    </div>
     <div class="globe">
         <Globe />
     </div>
@@ -181,46 +338,39 @@
             </div>
 
             <div class="projects">
-                <a href="https://wiki.wetfish.net/wiki">
+                <a href="https://chivecharities.org/">
+                    <div class="project">
+                        <Blob type="5">
+                            <img src="/content/business-chive-charities.jpg" alt="A screenshot of the Chive Charities Website" />
+                        </Blob>
+                        <div class="button wide dark">Chive Charities</div>
+                    </div>
+                </a>
+
+                <a href="https://churnkey.co/">
                     <div class="project">
                         <Blob type="4">
-                            <img src="/content/community-wiki.png" alt="A screenshot of the Wetfish Community Wiki" />
+                            <img src="/content/business-churnkey.png" alt="A screenshot of the ChurnKey.co Website" />
                         </Blob>
-                        <div class="button wide dark">Wiki</div>
+                        <div class="button wide dark">Churnkey</div>
                     </div>
                 </a>
 
-                <a href="https://wetfishonline.com/">
-                    <div class="project">
-                        <Blob type="7">
-                            <img src="/content/community-forums.png" alt="Pixel art avatars from the Wetfish Forums" />
-                        </Blob>
-                        <div class="button wide dark">Forums</div>
-                    </div>
-                </a>
-
-                <a href="https://wiki.wetfish.net/community">
-                    <div class="project">
-                        <img src="/content/community-chat.png" alt="Logos of open source chat programs" />
-                        <div class="button wide dark">Chat Network</div>
-                    </div>
-                </a>
-
-                <a href="https://wiki.wetfish.net/ai">
+                <a href="https://coyote.space/">
                     <div class="project">
                         <Blob type="3">
-                            <img src="/content/community-ai.jpg" alt="A desktop computer with a graphics card on fire, representing AI" />
+                            <img src="/content/business-coyote.jpg" alt="A screenshot of the Coyote Space Website" />
                         </Blob>
-                        <div class="button wide dark">AI / Machine Learning</div>
+                        <div class="button wide dark">Coyote Space</div>
                     </div>
                 </a>
 
-                <a href="https://wiki.wetfish.net/hamster-wheel">
+                <a href="https://wavve.co/">
                     <div class="project">
                         <Blob type="7">
-                            <img src="/content/community-hamster-wheel.jpg" alt="A woman standing inside of a human sized hamster wheel" />
+                            <img src="/content/business-wavve.png" alt="A screenshot of the Wavve.co Website" />
                         </Blob>
-                        <div class="button wide dark">Human Hamster Wheel</div>
+                        <div class="button wide dark">Wavve</div>
                     </div>
                 </a>
             </div>
