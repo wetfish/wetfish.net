@@ -1,9 +1,8 @@
 <script>
-	let { color } = $props();
+    let { color } = $props();
     import greenBubbles from '$lib/images/bubbles-green.svg';
     import pinkBubles from '$lib/images/bubbles-pink.svg';
     import blueBubbles from '$lib/images/bubbles-blue.svg';
-
 </script>
 <style>
     h2, h2 {
