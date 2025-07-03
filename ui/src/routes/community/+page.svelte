@@ -431,7 +431,6 @@
                 </a>
             </div>
         </div>
+        <Footer color="pink"></Footer>
     </DisappearingContent>
-
-    <Footer color="pink"></Footer>
 </section>

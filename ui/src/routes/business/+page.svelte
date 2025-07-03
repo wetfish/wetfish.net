@@ -380,6 +380,6 @@
                 </a>
             </div>
         </div>
+        <Footer color="blue"></Footer>
     </DisappearingContent>
-    <Footer color="blue"></Footer>
 </section>
