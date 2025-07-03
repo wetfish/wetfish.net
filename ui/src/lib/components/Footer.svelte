@@ -47,7 +47,7 @@
         background-image: url('$lib/images/bubbles-blue.svg');
     }
     .footer--pink {
-        background-image: linear-gradient(to bottom, rgba(44, 13, 93, 0), rgba(44, 13, 93, 1) 16%);
+        background-image: linear-gradient(to bottom, rgba(44, 13, 93, 0), rgba(44, 13, 93, 1) 50%);
     }
     .footer--pink::before {
         background-image: url('$lib/images/bubbles-pink.svg');
