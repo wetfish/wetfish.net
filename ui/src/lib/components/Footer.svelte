@@ -17,9 +17,21 @@
         padding-left: 5.8rem;
         padding-right: 5.8rem;
     }
+    @media screen and (max-width: 599px) {
+        .button {
+            width: 100%;
+            margin-bottom: 12px;
+        }
+    }
+
     .footer {
         position: relative;
-        padding: 16rem 6rem 10rem;
+        padding: 4rem 2rem;
+    }
+    @media screen and (min-width: 600px) {
+        .footer {
+            padding: 16rem 6rem 10rem;
+        }
     }
     .footer::before {
         content: '';
@@ -38,7 +50,9 @@
         z-index: 1;
     }
     @media screen and (min-width: 600px) {
-        width: 65%;
+        .footer-content {
+            width: 65%;
+        }
     }
     .footer--blue {
         background-image: linear-gradient(to bottom, rgba(44, 13, 93, 0), rgba(11, 54, 84, 1) 50%);
