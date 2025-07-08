@@ -368,7 +368,7 @@
                     <div slot="content">
                       <p>Description of Chive Charities</p>
                       <p>The Wetfish Communtiy is a mix of everything from queer hackers, to farmers, researchers, and artists. Some of us work at senior positions at big tech companies, others are just trying to make ends meet. We're spread out across the globe physically, but digitally united.</p>
-                      <br/><a class="button" href="https://chivecharities.org/">Visit Chive Charities</a>
+                      <br/><a class="button full" href="https://chivecharities.org/">Visit Chive Charities</a>
                     </div>
                 </Modal>
 

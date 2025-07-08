@@ -18,10 +18,22 @@
 <style>
     .modal {
         position:fixed;
-        top: 15%;
-        left: 10%;
-        width: 80%;
+        top: 0%;
+        left: 0%;
+        padding-top: 25vh;
+        width: 100%;
         z-index: 99;
+        max-height: 75vh;
+        overflow:auto;
+    }
+    @media screen and (min-width: 600px) {
+        .modal {
+            padding-top: 0;
+            overflow: visible;
+            top: 15%;
+            left: 10%;
+            width: 80%;
+        }
     }
     .modal-content {
         position: relative;
