@@ -66,11 +66,16 @@
         background-size: 100% auto;
         background-repeat: no-repeat;
         min-width: 160px;
+        max-width: 360px;
+    }
+    @media screen and (min-width: 1024px) {
+        .modal-corner {
+            top: -7.5rem;
+        }
     }
     .modal-corner-image {
         position: relative;
         padding: 20px 15px 0;
-        /*max-width: 100%;*/
     }
     .modal-corner-image img {
         width: 80%;
