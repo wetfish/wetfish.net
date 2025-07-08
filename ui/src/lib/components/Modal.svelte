@@ -22,7 +22,7 @@
         left: 0%;
         padding-top: 25vh;
         width: 100%;
-        z-index: 99;
+        z-index: 999;
         max-height: 75vh;
         overflow:auto;
     }
@@ -90,12 +90,11 @@
         display: block;
         top: 0;
         left: 0;
-        z-index: 98;
+        z-index: 998;
         width: 100vw;
         height: 100vh;
-        background-color: rgba(44, 13, 93, 0.8);  /*Optional: Adjust background color and opacity*/
-        backdrop-filter: blur(10px); /*Apply blur effect*/
-        -webkit-backdrop-filter: blur(10px); /* For Webkit browsers */
+        /*background-color: rgba(44, 13, 93, 0.8);*/
+        backdrop-filter: blur(10px);/*Apply blur effect*/
     }
     .close-button {
         display: block;
@@ -129,5 +128,5 @@
             </button>
         </div>
     </div>
-<div class="modal-backdrop"></div>
+    <div class="modal-backdrop"></div>
 {/if}
