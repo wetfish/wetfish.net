@@ -5,6 +5,12 @@ html, body {
     color: #fff;
 }
 
+body.modal-open {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
 @font-face {
     font-family: 'clash';
     src: url('$lib/fonts/ClashDisplay-Semibold.woff') format('woff');

@@ -247,10 +247,13 @@
     function closeModal() {
         console.log('close modal');
         showModal = '';
+        document.body.classList.remove('modal-open');
+
     }
     function openModal(event, modal = '') {
         event.preventDefault();
         showModal = modal;
+        document.body.classList.add('modal-open');
     }
 </script>
 
@@ -258,52 +261,52 @@
     <Modal open="{showModal === 'chive-charities'}" closeModal={closeModal}>
         <div slot="image">
             <Blob type="5">
-              /  <img style="width: 100%;" src="/content/business-chive-charities.jpg" alt="A screenshot of the Chive Charities Website" />
+              <img style="width: 100%;" src="/content/business-chive-charities.jpg" alt="A screenshot of the Chive Charities Website" />
             </Blob>
         </div>
         <h2 slot="heading">Chive Charities</h2>
         <div slot="content">
           <p>Description of Chive Charities</p>
-          <p>The Wetfish Communtiy is a mix of everything from queer hackers, to farmers, researchers, and artists. Some of us work at senior positions at big tech companies, others are just trying to make ends meet. We're spread out across the globe physically, but digitally united.</p>
+          <p>The Wetfish Community is a mix of everything from queer hackers, to farmers, researchers, and artists. Some of us work at senior positions at big tech companies, others are just trying to make ends meet. We're spread out across the globe physically, but digitally united.</p>
           <br/><a class="button full" href="https://chivecharities.org/">Visit Chive Charities</a>
         </div>
     </Modal>
     <Modal open="{showModal === 'churnkey'}" closeModal={closeModal}>
         <div slot="image">
             <Blob type="4">
-              /  <img style="width: 100%;" src="/content/business-churnkey.png" alt="A screenshot of the Churnkey Website" />
+              <img style="width: 100%;" src="/content/business-churnkey.png" alt="A screenshot of the Churnkey Website" />
             </Blob>
         </div>
         <h2 slot="heading">Churnkey</h2>
         <div slot="content">
           <p>Churnkey.co</p>
-          <p>The Wetfish Communtiy is a mix of everything from queer hackers, to farmers, researchers, and artists. Some of us work at senior positions at big tech companies, others are just trying to make ends meet. We're spread out across the globe physically, but digitally united.</p>
+          <p>The Wetfish Community is a mix of everything from queer hackers, to farmers, researchers, and artists. Some of us work at senior positions at big tech companies, others are just trying to make ends meet. We're spread out across the globe physically, but digitally united.</p>
           <br/><a class="button full" href="https://churnkey.co/">Visit Churnkey</a>
         </div>
     </Modal>
     <Modal open="{showModal === 'coyote'}" closeModal={closeModal}>
         <div slot="image">
             <Blob type="3">
-              /  <img style="width: 100%;" src="/content/business-coyote.jpg" alt="A screenshot of the Coyote.space Website" />
+              <img style="width: 100%;" src="/content/business-coyote.jpg" alt="A screenshot of the Coyote.space Website" />
             </Blob>
         </div>
         <h2 slot="heading">Coyote Space</h2>
         <div slot="content">
           <p>Coyote.space</p>
-          <p>The Wetfish Communtiy is a mix of everything from queer hackers, to farmers, researchers, and artists. Some of us work at senior positions at big tech companies, others are just trying to make ends meet. We're spread out across the globe physically, but digitally united.</p>
+          <p>The Wetfish Community is a mix of everything from queer hackers, to farmers, researchers, and artists. Some of us work at senior positions at big tech companies, others are just trying to make ends meet. We're spread out across the globe physically, but digitally united.</p>
           <br/><a class="button full" href="https://coyote.space/">Visit Coyote Space</a>
         </div>
     </Modal>
     <Modal open="{showModal === 'wavve'}" closeModal={closeModal}>
         <div slot="image">
             <Blob type="7">
-              /  <img style="width: 100%;" src="/content/business-wavve.png" alt="A screenshot of the Wavve.co Website" />
+              <img style="width: 100%;" src="/content/business-wavve.png" alt="A screenshot of the Wavve.co Website" />
             </Blob>
         </div>
         <h2 slot="heading">Wavve</h2>
         <div slot="content">
           <p>wavve.co</p>
-          <p>The Wetfish Communtiy is a mix of everything from queer hackers, to farmers, researchers, and artists. Some of us work at senior positions at big tech companies, others are just trying to make ends meet. We're spread out across the globe physically, but digitally united.</p>
+          <p>The Wetfish Community is a mix of everything from queer hackers, to farmers, researchers, and artists. Some of us work at senior positions at big tech companies, others are just trying to make ends meet. We're spread out across the globe physically, but digitally united.</p>
           <br/><a class="button full" href="https://wavve.co/">Visit Wavve</a>
         </div>
     </Modal>
