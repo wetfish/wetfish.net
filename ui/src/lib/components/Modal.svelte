@@ -5,15 +5,7 @@
     }
 
 	let { open, closeModal}: ComponentProps = $props();
-    // import Blob from '$lib/components/Blob.svelte';
-    // import modalCorner from '$lib/images/modal-corner.svg';
-    // let dialog = $state();
-    // import { createEventDispatcher } from 'svelte';
-    // const dispatch = createEventDispatcher();
-    // function closeModal() {
-    //     console.log('close modal called');
-    //     dispatch('modalClose', { message: 'Modal Closed' });
-    // }
+
 </script>
 <style>
     .modal {
