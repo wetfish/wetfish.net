@@ -248,6 +248,10 @@
         console.log('close modal');
         showModal = '';
     }
+    function openModal(event, modal = '') {
+        event.preventDefault();
+        showModal = modal;
+    }
 </script>
 
 <section class="business">
@@ -267,7 +271,7 @@
     <Modal open="{showModal === 'churnkey'}" closeModal={closeModal}>
         <div slot="image">
             <Blob type="4">
-              /  <img style="width: 100%;" src="/content/business-churnkey.jpg" alt="A screenshot of the Churnkey Website" />
+              /  <img style="width: 100%;" src="/content/business-churnkey.png" alt="A screenshot of the Churnkey Website" />
             </Blob>
         </div>
         <h2 slot="heading">Churnkey</h2>
@@ -293,7 +297,7 @@
     <Modal open="{showModal === 'wavve'}" closeModal={closeModal}>
         <div slot="image">
             <Blob type="7">
-              /  <img style="width: 100%;" src="/content/business-wavve.jpg" alt="A screenshot of the Wavve.co Website" />
+              /  <img style="width: 100%;" src="/content/business-wavve.png" alt="A screenshot of the Wavve.co Website" />
             </Blob>
         </div>
         <h2 slot="heading">Wavve</h2>
@@ -401,7 +405,7 @@
             </div>
 
             <div class="projects">
-                <a data-href="https://chivecharities.org/" on:click={() => (showModal = 'chive-charities')}>
+                <a href="https://chivecharities.org/" on:click={(event) => openModal(event, 'chive-charities')}>
                     <div class="project">
                         <Blob type="5">
                             <img src="/content/business-chive-charities.jpg" alt="A screenshot of the Chive Charities Website" />
@@ -409,7 +413,7 @@
                         <div class="button wide dark">Chive Charities</div>
                     </div>
                 </a>
-                <a href="https://churnkey.co/">
+                <a href="https://churnkey.co/" on:click={(event) => openModal(event, 'churnkey')}>
                     <div class="project">
                         <Blob type="4">
                             <img src="/content/business-churnkey.png" alt="A screenshot of the ChurnKey.co Website" />
@@ -419,7 +423,7 @@
                     </div>
                 </a>
 
-                <a href="https://coyote.space/">
+                <a href="https://coyote.space/" on:click={(event) => openModal(event, 'coyote')}>
                     <div class="project">
                         <Blob type="3">
                             <img src="/content/business-coyote.jpg" alt="A screenshot of the Coyote Space Website" />
@@ -428,7 +432,7 @@
                     </div>
                 </a>
 
-                <a href="https://wavve.co/">
+                <a href="https://wavve.co/" on:click={(event) => openModal(event, 'wavve')}>
                     <div class="project">
                         <Blob type="7">
                             <img src="/content/business-wavve.png" alt="A screenshot of the Wavve.co Website" />

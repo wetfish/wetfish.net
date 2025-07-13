@@ -5,7 +5,6 @@
     }
 
 	let { open, closeModal}: ComponentProps = $props();
-
 </script>
 <style>
     .modal {
@@ -67,7 +66,17 @@
     }
     .modal-corner-image {
         position: relative;
-        padding: 20px 15px 0;
+        padding: 8px 15px 0;
+    }
+    @media screen and (min-width: 1024px) {
+        .modal-corner-image {
+            padding: 12px 30px 0 20px;
+        }
+    }
+    @media screen and (min-width: 1320px) {
+        .modal-corner-image {
+            padding: 12px 38px 0 20px;
+        }
     }
     .modal-corner-image img {
         width: 80%;
@@ -120,5 +129,5 @@
             </button>
         </div>
     </div>
-    <div class="modal-backdrop"></div>
+    <div class="modal-backdrop" on:click={closeModal}></div>
 {/if}
