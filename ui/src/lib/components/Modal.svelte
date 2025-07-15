@@ -53,9 +53,6 @@
         height: 100%;
         left: -25%;
         top: -5rem;
-        background-image: url('$lib/images/modal-corner.svg');
-        background-size: 100% auto;
-        background-repeat: no-repeat;
         min-width: 160px;
         max-width: 360px;
     }
@@ -66,17 +63,6 @@
     }
     .modal-corner-image {
         position: relative;
-        padding: 8px 15px 0;
-    }
-    @media screen and (min-width: 1024px) {
-        .modal-corner-image {
-            padding: 12px 30px 0 20px;
-        }
-    }
-    @media screen and (min-width: 1320px) {
-        .modal-corner-image {
-            padding: 12px 38px 0 20px;
-        }
     }
     .modal-corner-image img {
         width: 80%;
