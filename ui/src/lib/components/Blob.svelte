@@ -49,14 +49,13 @@
         top: 0;
         left: 0;
         width: 100%;
+        height: 100%;
     }
     .blob-image {
         z-index: -1;
     }
     .bubbles-image {
         z-index: 2;
-        width: 100%;
-        height: 100%;
     }
 </style>
 
