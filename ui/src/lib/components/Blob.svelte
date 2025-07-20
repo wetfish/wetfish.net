@@ -62,38 +62,17 @@
 
 <script>
     let { type, children, color = 'blue' } = $props();
-    // let blobBackgroundURL = `$lib/images/blob${type}-${color}.svg`;
-    // import blobBackground from blobBackgroundURL;
-    // const images = import.meta.glob(
-    // '$lib/images/blobs/*.svg',
-    // { eager: true, import: 'default' },
-// );
-
-
-
 </script>
 
 {type}
-{#await import(`$lib/images/blobs/blob${type}-${color}.svg`) then { default: bgSrc }}
-<!-- <div class="blob-container"> -->
-    <div class="blob-container" style="background-image: url('{bgSrc}');">
-    <!-- {#await import(`$lib/images/blobs/blob${type}-${color}.svg`) then { default: src }}
+<div class="blob-container">
+    {#await import(`$lib/images/blobs/blob${type}-${color}.svg`) then { default: src }}
         <img class="blob-image" {src}/>
-    {/await}        -->
+    {/await}       
     <div class={`blob-${type}`}>
         {@render children?.()}
     </div>
     {#await import(`$lib/images/blobs/bubbles${type}-${color}.svg`) then { default: src }}
-    <!-- <div class="bubble-container" style="width:100%; height: 100%; position: absolute; top: 0; left: 0; background-image: url('{src}'); background-size: 100% 100%; background-repeat: no-repeat;"> -->
         <img class="bubbles-image" {src}/>
-    <!-- </div> -->
     {/await}
 </div>
-{:catch error}
-    <div class={`blob-${type}`}>
-        {@render children?.()}
-    </div>
-    {#await import(`$lib/images/blobs/bubbles${type}-${color}.svg`) then { default: src }}
-        <img class="bubbles-image" {src}/>
-    {/await}
-{/await}
