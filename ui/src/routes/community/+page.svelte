@@ -388,7 +388,7 @@
             <div class="projects">
                 <a href="https://wiki.wetfish.net/wiki">
                     <div class="project">
-                        <Blob type="4">
+                        <Blob type="4" color="pink">
                             <img src="/content/community-wiki.png" alt="A screenshot of the Wetfish Community Wiki" />
                         </Blob>
                         <div class="button wide dark">Wiki</div>
@@ -397,7 +397,7 @@
 
                 <a href="https://wetfishonline.com/">
                     <div class="project">
-                        <Blob type="7">
+                        <Blob type="7" color="pink">
                             <img src="/content/community-forums.png" alt="Pixel art avatars from the Wetfish Forums" />
                         </Blob>
                         <div class="button wide dark">Forums</div>
@@ -406,14 +406,16 @@
 
                 <a href="https://wiki.wetfish.net/community">
                     <div class="project">
-                        <img src="/content/community-chat.png" alt="Logos of open source chat programs" />
+                        <Blob type="11" color="pink">
+                            <img src="/content/community-chat.png" alt="Logos of open source chat programs" />
+                        </Blob>
                         <div class="button wide dark">Chat Network</div>
                     </div>
                 </a>
 
                 <a href="https://wiki.wetfish.net/ai">
                     <div class="project">
-                        <Blob type="3">
+                        <Blob type="3" color="pink">
                             <img src="/content/community-ai.jpg" alt="A desktop computer with a graphics card on fire, representing AI" />
                         </Blob>
                         <div class="button wide dark">AI / Machine Learning</div>
@@ -422,7 +424,7 @@
 
                 <a href="https://wiki.wetfish.net/hamster-wheel">
                     <div class="project">
-                        <Blob type="7">
+                        <Blob type="7" color="pink">
                             <img src="/content/community-hamster-wheel.jpg" alt="A woman standing inside of a human sized hamster wheel" />
                         </Blob>
                         <div class="button wide dark">Human Hamster Wheel</div>
