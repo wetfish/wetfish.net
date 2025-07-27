@@ -1,4 +1,4 @@
-<style lang="scss">
+    <style lang="scss">
     .blob-1 {
         clip-path: url(#blob-1);
     }
@@ -63,7 +63,6 @@
     let { type, children, color = 'blue' } = $props();
 </script>
 
-{type}
 <div class="blob-container">
     {#await import(`$lib/images/blobs/blob${type}-${color}.svg`) then { default: src }}
         <img class="blob-image" {src}/>
