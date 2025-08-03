@@ -235,6 +235,7 @@
     import Globe from "$lib/components/Globe.svelte";
     import blueCloud from '$lib/images/cloud-blue.png';
     import purpleCloud from '$lib/images/cloud-purple.png';
+    import Footer from "$lib/components/Footer.svelte";
 
     const accordionOptions = [
         {id: 'techdev', title: 'Software Development'},
@@ -379,5 +380,6 @@
                 </a>
             </div>
         </div>
+        <Footer color="blue"></Footer>
     </DisappearingContent>
 </section>

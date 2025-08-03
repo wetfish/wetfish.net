@@ -255,6 +255,7 @@
     import swoopMobile2 from '$lib/images/swoop-community-mobile-2.svg';
     import swoopMobile3 from '$lib/images/swoop-community-mobile-3.svg';
     import swoopDesktop from '$lib/images/swoop-community-desktop.svg';
+    import Footer from "$lib/components/Footer.svelte";
 
     const accordionOptions = [
         {id: 'postscarcity', title: 'Post-Scarcity'},
@@ -430,5 +431,6 @@
                 </a>
             </div>
         </div>
+        <Footer color="pink"></Footer>
     </DisappearingContent>
 </section>
