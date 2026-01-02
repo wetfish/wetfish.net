@@ -251,6 +251,7 @@
         <img class="blue-cloud" src="{blueCloud}" alt="Blue nebula cloud background">
         <img class="purple-cloud" src="{purpleCloud}" alt="Purple nebula cloud background">
     </div>
+
     <div class="globe">
         <Globe />
     </div>

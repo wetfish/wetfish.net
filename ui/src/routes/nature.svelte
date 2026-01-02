@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="buttons">
-                    <a class="button full" href="https://wet.fish/nature">Learn More About Nature Conservation</a>
+                    <a class="button full" href="/nature">Learn More About Nature Conservation</a>
                 </div>
             </div>
         </div>
