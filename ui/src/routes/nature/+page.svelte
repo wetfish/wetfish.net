@@ -50,23 +50,32 @@
         }
 
         &.one {
-            padding-top: 450px;
-
-            h1 {
-                width: 33%;
-            }
-
-            .text {
-                width: 44%;
-            }
+            padding-top: 275px;
         }
 
         &.two {
-            padding-top: 200px;
+            padding-top: 100px;
         }
 
         &.three {
+            padding-top: 150px;
+            padding-bottom: 150px;
             flex-direction: column;
+        }
+    }
+
+    @media screen and (min-width: 460px) {
+        .content {
+            padding-left: 2em;
+            padding-right: 2em;
+
+            &.one {
+                padding-top: 325px;
+
+                h1 {
+                    width: 60%;
+                }
+            }
         }
     }
 
@@ -75,7 +84,7 @@
             padding: 500px 2em 0;
 
             .text {
-                width: 50%;
+                width: 80%;
             }
 
             &.two {
@@ -87,6 +96,16 @@
     @media screen and (min-width: 1024px) {
         .content {
             padding: 500px 8em 0;
+
+            &.one {
+                h1 {
+                    width: 33%;
+                }
+
+                .text {
+                    width: 66%;
+                }
+            }
 
             &.two {
                 justify-content: flex-end;
@@ -108,7 +127,20 @@
                 width: 80%;
             }
 
+            &.one {
+                padding-top: 400px;
+
+                h1 {
+                    width: 33%;
+                }
+
+                .text {
+                    width: 44%;
+                }
+            }
+
             &.two {
+                padding-top: 300px;
                 justify-content: flex-end;
                 height: 800px;
 
