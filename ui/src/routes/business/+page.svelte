@@ -233,6 +233,7 @@
     import Accordion from '$lib/components/Accordion.svelte';
     import Blob from '$lib/components/Blob.svelte';
     import Globe from "$lib/components/Globe.svelte";
+    import Modal from '$lib/components/Modal.svelte';
     import blueCloud from '$lib/images/cloud-blue.png';
     import purpleCloud from '$lib/images/cloud-purple.png';
     import Footer from "$lib/components/Footer.svelte";
@@ -242,9 +243,74 @@
         {id: 'bizdev', title: 'Business Automation'},
         {id: 'design', title: 'Design & Branding'},
     ];
+
+    let showModal = '';
+    function closeModal() {
+        console.log('close modal');
+        showModal = '';
+        document.body.classList.remove('modal-open');
+
+    }
+    function openModal(event, modal = '') {
+        event.preventDefault();
+        showModal = modal;
+        document.body.classList.add('modal-open');
+    }
 </script>
 
 <section class="business">
+    <Modal open="{showModal === 'chive-charities'}" closeModal={closeModal}>
+        <div slot="image">
+            <Blob type="5">
+              <img style="width: 100%;" src="/content/business-chive-charities.jpg" alt="A screenshot of the Chive Charities Website" />
+            </Blob>
+        </div>
+        <h2 slot="heading">Chive Charities</h2>
+        <div slot="content">
+          <p>Description of Chive Charities</p>
+          <p>The Wetfish Community is a mix of everything from queer hackers, to farmers, researchers, and artists. Some of us work at senior positions at big tech companies, others are just trying to make ends meet. We're spread out across the globe physically, but digitally united.</p>
+          <br/><a class="button full" href="https://chivecharities.org/">Visit Chive Charities</a>
+        </div>
+    </Modal>
+    <Modal open="{showModal === 'churnkey'}" closeModal={closeModal}>
+        <div slot="image">
+            <Blob type="4">
+              <img style="width: 100%;" src="/content/business-churnkey.png" alt="A screenshot of the Churnkey Website" />
+            </Blob>
+        </div>
+        <h2 slot="heading">Churnkey</h2>
+        <div slot="content">
+          <p>Churnkey.co</p>
+          <p>The Wetfish Community is a mix of everything from queer hackers, to farmers, researchers, and artists. Some of us work at senior positions at big tech companies, others are just trying to make ends meet. We're spread out across the globe physically, but digitally united.</p>
+          <br/><a class="button full" href="https://churnkey.co/">Visit Churnkey</a>
+        </div>
+    </Modal>
+    <Modal open="{showModal === 'coyote'}" closeModal={closeModal}>
+        <div slot="image">
+            <Blob type="3">
+              <img style="width: 100%;" src="/content/business-coyote.jpg" alt="A screenshot of the Coyote.space Website" />
+            </Blob>
+        </div>
+        <h2 slot="heading">Coyote Space</h2>
+        <div slot="content">
+          <p>Coyote.space</p>
+          <p>The Wetfish Community is a mix of everything from queer hackers, to farmers, researchers, and artists. Some of us work at senior positions at big tech companies, others are just trying to make ends meet. We're spread out across the globe physically, but digitally united.</p>
+          <br/><a class="button full" href="https://coyote.space/">Visit Coyote Space</a>
+        </div>
+    </Modal>
+    <Modal open="{showModal === 'wavve'}" closeModal={closeModal}>
+        <div slot="image">
+            <Blob type="7">
+              <img style="width: 100%;" src="/content/business-wavve.png" alt="A screenshot of the Wavve.co Website" />
+            </Blob>
+        </div>
+        <h2 slot="heading">Wavve</h2>
+        <div slot="content">
+          <p>wavve.co</p>
+          <p>The Wetfish Community is a mix of everything from queer hackers, to farmers, researchers, and artists. Some of us work at senior positions at big tech companies, others are just trying to make ends meet. We're spread out across the globe physically, but digitally united.</p>
+          <br/><a class="button full" href="https://wavve.co/">Visit Wavve</a>
+        </div>
+    </Modal>
     <div class="content-background">
         <div class="header"></div>
         <div class="gradient"></div>
@@ -344,7 +410,7 @@
             </div>
 
             <div class="projects">
-                <a href="https://chivecharities.org/">
+                <a href="https://chivecharities.org/" on:click={(event) => openModal(event, 'chive-charities')}>
                     <div class="project">
                         <Blob type="5">
                             <img src="/content/business-chive-charities.jpg" alt="A screenshot of the Chive Charities Website" />
@@ -352,17 +418,17 @@
                         <div class="button wide dark">Chive Charities</div>
                     </div>
                 </a>
-
-                <a href="https://churnkey.co/">
+                <a href="https://churnkey.co/" on:click={(event) => openModal(event, 'churnkey')}>
                     <div class="project">
                         <Blob type="4">
                             <img src="/content/business-churnkey.png" alt="A screenshot of the ChurnKey.co Website" />
                         </Blob>
                         <div class="button wide dark">Churnkey</div>
+
                     </div>
                 </a>
 
-                <a href="https://coyote.space/">
+                <a href="https://coyote.space/" on:click={(event) => openModal(event, 'coyote')}>
                     <div class="project">
                         <Blob type="3">
                             <img src="/content/business-coyote.jpg" alt="A screenshot of the Coyote Space Website" />
@@ -371,7 +437,7 @@
                     </div>
                 </a>
 
-                <a href="https://wavve.co/">
+                <a href="https://wavve.co/" on:click={(event) => openModal(event, 'wavve')}>
                     <div class="project">
                         <Blob type="7">
                             <img src="/content/business-wavve.png" alt="A screenshot of the Wavve.co Website" />
