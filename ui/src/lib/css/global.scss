@@ -155,6 +155,11 @@ p, ul, li {
     }
 }
 
+.blobs {
+    position: absolute;
+    z-index: -1;
+}
+
 @media screen and (min-width: 600px) {
     .button {
         font-size: 21px;
