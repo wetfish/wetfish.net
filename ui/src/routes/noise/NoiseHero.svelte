@@ -58,18 +58,20 @@
     <h1>The Noise handshake patterns,<br />one diagram at a time.</h1>
 
     <p class="lead">
-        The Noise Protocol Framework is a toolkit for building encrypted connections — the
-        handshakes underneath WireGuard, the Lightning Network, and WhatsApp. Rather than one
-        fixed protocol, Noise is a family of handshake patterns, each making different tradeoffs:
-        who proves their identity, whose identity stays hidden, how soon you can send data, and
-        what an attacker can do. Every pattern gets a terse code like <code>XK</code> or
-        <code>NK1</code>, built from a tiny token language.
+        The Noise Protocol Framework is a toolkit for building encrypted connections. It is what
+        the handshakes underneath WireGuard, the Lightning Network, and WhatsApp are built from.
+        Noise is not one fixed protocol but a family of handshake patterns, and each pattern makes
+        a different set of tradeoffs about who proves their identity, whose identity stays hidden,
+        how soon you can send data, and what an attacker can do. Every pattern has a short code
+        like <a class="pl" href="#p-XK">XK</a> or <a class="pl" href="#p-NK1">NK1</a>, written in a
+        small token language.
     </p>
 
     <p class="lead">
-        The official spec is precise but dense. This guide exists to make the patterns
-        approachable — decoding all <b>38</b> of them into plain-English names, sequence diagrams,
-        the spec's <b>security grades</b>, and notes on when to reach for each. Token sequences and
-        grades come from the <a href="https://noiseprotocol.org/noise.html">official spec (rev 34)</a>.
+        The official spec is precise, but it can be a lot to take in. This guide is meant to make
+        the patterns easier to follow. It lays out all <b>38</b> of them with plain-English names,
+        sequence diagrams, the spec's <b>security grades</b>, and notes on when each one is a
+        reasonable choice. The token sequences and grades come from the
+        <a href="https://noiseprotocol.org/noise.html">official spec (rev 34)</a>.
     </p>
 </section>

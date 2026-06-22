@@ -12,8 +12,10 @@
     markup and styling live in the colocated components.
 -->
 <script>
-    import TopNav from '$lib/components/TopNav.svelte';
+    import { tick } from 'svelte';
+    import MenuButton from '$lib/components/MenuButton.svelte';
     import Menu from '$lib/components/Menu.svelte';
+    import logo from '$lib/images/wetfish-logo.png';
     import { menuStore } from '$lib/store.js';
 
     import { CARDS, SECT, FILTERS } from './patterns.js';
@@ -48,10 +50,74 @@
     }
 
     const totalVisible = $derived(CARDS.filter(matches).length);
+
+    /* The sticky bar and the results container, used to scroll the freshly
+       filtered results into view (clicking a chip otherwise looks like nothing
+       happened when the matching cards are already below the fold). */
+    let barEl = $state(null);
+    let resultsEl = $state(null);
+
+    async function selectFilter(value) {
+        curFilter = value;
+        // Wait for the grid to re-render with the new filter before measuring.
+        await tick();
+        if (!resultsEl) return;
+        const barHeight = barEl ? barEl.offsetHeight : 64;
+        const top = resultsEl.getBoundingClientRect().top + window.scrollY - barHeight - 12;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    }
+
+    /* Smooth-scroll to an element id, leaving room for the sticky bar. */
+    function scrollToId(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const barHeight = barEl ? barEl.offsetHeight : 64;
+        const top = el.getBoundingClientRect().top + window.scrollY - barHeight - 12;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+        history.replaceState(null, '', '#' + id);
+    }
+
+    /*
+     * Inline pattern links (a.pl) point at "#p-CODE" cards. Handle them here so
+     * that a link still works when its target is currently filtered out: clear
+     * the filter and search first, then scroll once the card is back in the DOM.
+     */
+    async function handlePatternLink(event) {
+        const link = event.target.closest && event.target.closest('a.pl');
+        if (!link) return;
+        const href = link.getAttribute('href') || '';
+        if (!href.startsWith('#')) return;
+
+        event.preventDefault();
+        const id = href.slice(1);
+
+        if (!document.getElementById(id)) {
+            curFilter = 'all';
+            curQuery = '';
+            await tick();
+        }
+        scrollToId(id);
+    }
+
+    /*
+     * Delegate clicks from the page root so the inline pattern links (which are
+     * injected via {@html} and can't carry a Svelte handler of their own) are
+     * intercepted by handlePatternLink. Using an action instead of an inline
+     * onclick keeps this off a non-interactive element; the real <a> tags stay
+     * keyboard-accessible and fire click on Enter, so that path works too.
+     */
+    function patternLinks(node) {
+        node.addEventListener('click', handlePatternLink);
+        return {
+            destroy() {
+                node.removeEventListener('click', handlePatternLink);
+            }
+        };
+    }
 </script>
 
 <svelte:head>
-    <title>Noise handshake patterns — wetfish</title>
+    <title>Noise handshake patterns · Wetfish</title>
     <meta
         name="description"
         content="A visual reference for all 38 Noise Protocol handshake patterns: sequence diagrams, plain-English names, security grades, and when to use each."
@@ -149,6 +215,21 @@
         font-family: var(--mono);
     }
 
+    /*
+     * Inline references to a pattern (e.g. "XK" in the prose) link to that
+     * pattern's card. They keep the monospace, accented look of inline code but
+     * carry a faint underline (solid on hover) and a pointer cursor so it's
+     * clear they're clickable.
+     */
+    :global(.noise-ref a.pl) {
+        font-family: var(--mono);
+        white-space: nowrap;
+        cursor: pointer;
+        text-decoration: underline;
+        text-decoration-color: rgba(75, 67, 201, 0.35);
+        text-underline-offset: 2px;
+    }
+
     :global(.noise-ref :focus-visible) {
         outline: 2px solid var(--accent);
         outline-offset: 2px;
@@ -173,6 +254,11 @@
         border-bottom: 1px solid var(--line);
     }
 
+    /*
+     * Default (narrow) layout: a single centered row matching the page's
+     * content column (max-width 1180, 24px padding). Logo, the brand + tools
+     * group, and the menu all flow inline here.
+     */
     .bar-inner {
         max-width: 1180px;
         margin: 0 auto;
@@ -181,7 +267,55 @@
         display: flex;
         align-items: center;
         gap: 16px;
-        flex-wrap: wrap;
+    }
+
+    /* The Wetfish logo (left) and menu (right) are "site chrome". */
+    .bar-logo {
+        display: flex;
+        align-self: start;
+        flex-shrink: 0;
+    }
+
+    /*
+     * Oversized on purpose: the logo is taller than the bar and hangs out of
+     * the bottom (the cursive descender drops below the divider) for a playful
+     * "sticker on the page" look. The negative bottom margin stops the bar from
+     * growing to the logo's full height, so only the descender spills over.
+     */
+    .bar-logo img {
+        height: 65px;
+        display: block;
+        margin-bottom: -22px;
+    }
+
+    .bar-logo img:hover {
+        animation: bar-logo-trippy 2s linear infinite;
+    }
+
+    @keyframes bar-logo-trippy {
+        0% { filter: hue-rotate(0deg); }
+        50% { filter: hue-rotate(180deg); }
+        100% { filter: hue-rotate(360deg); }
+    }
+
+    .menu-slot {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    /*
+     * The brand + tools group is the "reference guide" content. It fills the
+     * space between the logo and menu so the brand sits at the content's left
+     * edge and the tools at its right edge.
+     */
+    .bar-center {
+        flex: 1;
+        min-width: 0;
+
+        display: flex;
+        align-items: center;
+        gap: 16px;
     }
 
     .brand {
@@ -197,10 +331,28 @@
         font-weight: 400;
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 640px) {
         .brand {
             display: none;
         }
+    }
+
+    /*
+     * The shared MenuButton is built for the dark theme: it paints its glyph
+     * white (invisible on this light bar) and pins its height to 32px. Under
+     * this page's border-box reset, that 32px ends up including the padding and
+     * border, which squashes the ≡ glyph. Recolor it and let it size to its
+     * own content so the glyph sits centered with room to breathe.
+     */
+    :global(.noise-ref .bar .menu-button) {
+        color: var(--ink);
+        height: auto !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        font-size: 24px;
+        padding: 8px 10px;
     }
 
     .bar-tools {
@@ -209,6 +361,42 @@
         gap: 8px;
         margin-left: auto;
         flex-wrap: wrap;
+    }
+
+    /*
+     * Wide layout: once the viewport is wide enough to have real gutters
+     * (~110px each side, room for the ~96px logo), break the logo and menu out
+     * into those gutters while the brand + tools stay locked to the same
+     * 1180px content column as the page body below. The three-column grid is
+     * 1fr | content | 1fr, so the center column is viewport-centered and its
+     * 24px padding lines the brand and tools up exactly with the main content.
+     */
+    @media (min-width: 1400px) {
+        .bar-inner {
+            max-width: none;
+            padding: 10px 0;
+
+            display: grid;
+            grid-template-columns: 1fr minmax(0, 1180px) 1fr;
+            gap: 0;
+        }
+
+        .bar-logo {
+            grid-column: 1;
+            justify-self: start;
+            padding-left: 24px;
+        }
+
+        .bar-center {
+            grid-column: 2;
+            padding: 0 24px;
+        }
+
+        .menu-slot {
+            grid-column: 3;
+            justify-self: end;
+            padding-right: 24px;
+        }
     }
 
     .chips {
@@ -300,27 +488,36 @@
     <Menu />
 {/if}
 
-<div class="noise-ref">
-    <div class="bar">
+<div class="noise-ref" use:patternLinks>
+    <div class="bar" bind:this={barEl}>
         <div class="bar-inner">
-            <TopNav compact />
-            <span class="brand">Noise <span class="dim">· handshake patterns</span></span>
+            <a href="/" class="bar-logo" aria-label="Wetfish home">
+                <img src={logo} alt="Wetfish logo" />
+            </a>
 
-            <div class="bar-tools">
-                <div class="chips">
-                    {#each FILTERS as [value, label]}
-                        <button class="chip" class:on={curFilter === value} onclick={() => (curFilter = value)}>
-                            {label}
-                        </button>
-                    {/each}
+            <div class="bar-center">
+                <div class="brand">noise://<span class="dim">handshake-patterns</span></div>
+
+                <div class="bar-tools">
+                    <div class="chips">
+                        {#each FILTERS as [value, label]}
+                            <button class="chip" class:on={curFilter === value} onclick={() => selectFilter(value)}>
+                                {label}
+                            </button>
+                        {/each}
+                    </div>
+                    <input
+                        class="nref-search"
+                        type="search"
+                        placeholder="filter… e.g. XK, mutual"
+                        bind:value={curQuery}
+                        aria-label="Search patterns"
+                    />
                 </div>
-                <input
-                    class="nref-search"
-                    type="search"
-                    placeholder="search patterns…"
-                    bind:value={curQuery}
-                    aria-label="Search patterns"
-                />
+            </div>
+
+            <div class="menu-slot">
+                <MenuButton />
             </div>
         </div>
     </div>
@@ -330,16 +527,18 @@
         <NotationPrimer />
         <GradeGuide />
 
-        {#each SECT as sec (sec.g)}
-            {@const sectionCards = CARDS.filter((c) => c.g === sec.g && matches(c))}
-            {#if sectionCards.length}
-                <PatternGrid section={sec} cards={sectionCards} />
-            {/if}
-        {/each}
+        <div class="results" bind:this={resultsEl}>
+            {#each SECT as sec (sec.g)}
+                {@const sectionCards = CARDS.filter((c) => c.g === sec.g && matches(c))}
+                {#if sectionCards.length}
+                    <PatternGrid section={sec} cards={sectionCards} />
+                {/if}
+            {/each}
 
-        {#if totalVisible === 0}
-            <div class="empty">No patterns match.</div>
-        {/if}
+            {#if totalVisible === 0}
+                <div class="empty">No patterns match.</div>
+            {/if}
+        </div>
 
         <SectionHead
             title="Pre-shared keys (PSK)"
@@ -353,8 +552,9 @@
         <div class="foot-inner">
             Pattern definitions, security grades, and identity-hiding grades from
             <a href="https://noiseprotocol.org/noise.html">The Noise Protocol Framework</a>, rev. 34
-            (public domain). Built by wetfish as a developer community resource —
-            <a href="/community">join us for monthly show &amp; tell</a>.
+            (public domain). <br />
+            Built by Wetfish as a developer community resource.
+            <a href="/community">Join us for monthly show &amp; tell</a>.
         </div>
     </footer>
 

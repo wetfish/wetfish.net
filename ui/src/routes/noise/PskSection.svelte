@@ -141,29 +141,30 @@
             <p>
                 A <b>pre-shared symmetric key</b> is a 32-byte secret both parties already hold. A
                 <code>psk</code> token mixes it into <b>both</b> the encryption key and the
-                transcript hash, via <code>MixKeyAndHash</code>.
+                transcript hash, through <code>MixKeyAndHash</code>.
             </p>
             <p>
-                It's an <b>independent layer</b> of authentication and secrecy. Even if the DH math
-                is broken, a static key leaks, or a quantum computer arrives, an attacker without the
-                PSK can neither read nor forge the session. <b>WireGuard</b> uses exactly this —
-                <code>Noise_IKpsk2</code> — as an optional post-quantum / defense-in-depth hedge.
+                It acts as an <b>independent layer</b> of authentication and secrecy. Even if the DH
+                math is broken, a static key leaks, or a quantum computer turns up, an attacker who
+                does not have the PSK can neither read nor forge the session. <b>WireGuard</b> uses
+                exactly this, <code>Noise_IKpsk2</code>, as an optional defense-in-depth and
+                post-quantum measure.
             </p>
             <h3>Where it goes</h3>
             <p>
-                A modifier names the placement: <code>psk0</code> puts the token at the
-                <b>start of message 1</b>; <code>psk1</code>, <code>psk2</code>, … put it at the
-                <b>end of message 1, 2, …</b>. The name carries it: <code>NNpsk0</code>,
-                <code>XXpsk3</code>, <code>IKpsk2</code>.
+                A modifier names the placement. <code>psk0</code> puts the token at the
+                <b>start of message 1</b>, while <code>psk1</code>, <code>psk2</code>, and so on put
+                it at the <b>end of message 1, 2, and so on</b>. The name carries the placement:
+                <code>NNpsk0</code>, <code>XXpsk3</code>, <code>IKpsk2</code>.
             </p>
             <h3>Pitfalls</h3>
             <p>
-                The PSK must be a real <b>256-bit secret distributed out of band</b> — never a
-                password. There's a validity rule: you can't encrypt anything after a
-                <code>psk</code> token until you've also sent an ephemeral, so the PSK-derived key
-                stays randomized. And for patterns that transmit the initiator's static
-                (<code>X</code>/<code>I</code>), the responder often can't look up the right pairwise
-                PSK until it decrypts that key, so <code>psk1</code> is preferred over
+                The PSK has to be a real <b>256-bit secret distributed out of band</b>, not a
+                password. There is also a validity rule: you cannot encrypt anything after a
+                <code>psk</code> token until you have also sent an ephemeral, which keeps the
+                PSK-derived key randomized. And for patterns that transmit the initiator's static key
+                (<code>X</code> or <code>I</code>), the responder often cannot look up the right
+                pairwise PSK until it has decrypted that key, so <code>psk1</code> is preferred over
                 <code>psk0</code> there.
             </p>
         </div>

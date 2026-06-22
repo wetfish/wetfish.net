@@ -22,6 +22,9 @@
         border-radius: 14px;
         padding: 20px 22px;
 
+        /* Leave room for the sticky bar when jumped to via an anchor link. */
+        scroll-margin-top: 84px;
+
         display: flex;
         flex-direction: column;
         gap: 14px;
@@ -170,7 +173,7 @@
     }
 </style>
 
-<div class="card">
+<div class="card" id="p-{card.c}">
     <div class="card-top">
         <div class="code">
             {#each card.codeParts as part}

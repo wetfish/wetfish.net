@@ -114,25 +114,25 @@
 <div class="guide">
     <h2>How the grades work</h2>
     <p class="sub">
-        Each card lists the spec's per-message grades. Higher is stronger. They quantify the words
-        on the card — "encrypted, no forward secrecy" becomes a precise number with a known attack
-        model.
+        Each card lists the spec's per-message grades, where higher is stronger. They put a number
+        on the words on the card, so "encrypted, no forward secrecy" turns into a specific value
+        with a known attack model.
     </p>
 
     <div class="guide-grid">
         <div class="scale">
-            <h3>Source <span class="muted">· sender auth (0–2)</span></h3>
-            <div class="row"><GradeBadge badge={b(0, 'g-bad')} /><div>No authentication — could be anyone, including an attacker.</div></div>
-            <div class="row"><GradeBadge badge={b(1, 'g-mid')} /><div>Authenticated, but <b>KCI-vulnerable</b> — forgeable if the recipient's key leaks (the <code>ss</code> case).</div></div>
+            <h3>Source <span class="muted">· sender auth (0 to 2)</span></h3>
+            <div class="row"><GradeBadge badge={b(0, 'g-bad')} /><div>No authentication; could be anyone, including an attacker.</div></div>
+            <div class="row"><GradeBadge badge={b(1, 'g-mid')} /><div>Authenticated, but <b>KCI-vulnerable</b>: forgeable if the recipient's key leaks (the <code>ss</code> case).</div></div>
             <div class="row"><GradeBadge badge={b(2, 'g-ok')} /><div>Authenticated and <b>KCI-resistant</b> (an <code>es</code>/<code>se</code> DH).</div></div>
         </div>
 
         <div class="scale">
-            <h3>Destination <span class="muted">· confidentiality (0–5)</span></h3>
+            <h3>Destination <span class="muted">· confidentiality (0 to 5)</span></h3>
             <div class="row"><GradeBadge badge={b(0, 'g-bad')} /><div>Cleartext.</div></div>
             <div class="row"><GradeBadge badge={b(1, 'g-bad')} /><div>Forward-secret, but the recipient isn't authenticated (could be an attacker).</div></div>
             <div class="row"><GradeBadge badge={b(2, 'g-mid')} /><div>To a known recipient, <b>no forward secrecy</b>, replayable.</div></div>
-            <div class="row"><GradeBadge badge={b(3, 'g-mid')} /><div>Weak forward secrecy — recipient's ephemeral binding unverified.</div></div>
+            <div class="row"><GradeBadge badge={b(3, 'g-mid')} /><div>Weak forward secrecy; the recipient's ephemeral binding is unverified.</div></div>
             <div class="row"><GradeBadge badge={b(4, 'g-mid')} /><div>Weak forward secrecy if the <b>sender's</b> key was compromised.</div></div>
             <div class="row"><GradeBadge badge={b(5, 'g-ok')} /><div>Strong forward secrecy to an authenticated recipient.</div></div>
         </div>
@@ -140,31 +140,35 @@
         <div class="scale">
             <h3>Identity hiding <span class="muted">· per key (categorical)</span></h3>
             <div class="row"><GradeBadge badge={b(0, 'g-bad')} /><div>Static key sent in clear.</div></div>
-            <div class="row"><GradeBadge badge={b('1–2', 'g-mid')} /><div>Encrypted with forward secrecy, but to/from an unauthenticated party.</div></div>
+            <div class="row"><GradeBadge badge={b('1-2', 'g-mid')} /><div>Encrypted with forward secrecy, but to or from an unauthenticated party.</div></div>
             <div class="row"><GradeBadge badge={b(3, 'g-mid')} /><div>Not sent, but a passive attacker can test guesses for the key.</div></div>
-            <div class="row"><GradeBadge badge={b('4–7', 'g-mid')} /><div>Various: encrypted without full FS, or guessable by an active attacker.</div></div>
+            <div class="row"><GradeBadge badge={b('4-7', 'g-mid')} /><div>Various cases: encrypted without full forward secrecy, or guessable by an active attacker.</div></div>
             <div class="row"><GradeBadge badge={b(8, 'g-ok')} /><div>Encrypted with forward secrecy to an authenticated party (best).</div></div>
             <div class="row"><GradeBadge badge={b(9, 'g-mid')} /><div>Not sent; only an active attacker who records a run can probe it.</div></div>
-            <div class="row"><GradeBadge badge={b('–', 'g-na')} /><div>No static key, or not applicable.</div></div>
+            <div class="row"><GradeBadge badge={b('\u2013', 'g-na')} /><div>No static key, or not applicable.</div></div>
         </div>
     </div>
 
     <div class="choose">
         <h3>Choosing a pattern</h3>
         <p>
-            <b>Do you already hold the peer's key?</b> If you've pinned the server's key, use
-            <code>NK</code> (anonymous client) or <code>XK</code> (authenticated client — Lightning's
-            choice). If neither side knows the other, use <code>XX</code> — the safe default.
+            <b>Do you already hold the peer's key?</b> If you have pinned the server's key, use
+            <a class="pl" href="#p-NK">NK</a> for an anonymous client, or
+            <a class="pl" href="#p-XK">XK</a> for an authenticated one (the Lightning Network's
+            choice). If neither side knows the other ahead of time,
+            <a class="pl" href="#p-XX">XX</a> is a reasonable default.
         </p>
         <p>
-            <b>Need 0-RTT (data in the first message)?</b> Use a pattern ending in <code>K</code>:
-            <code>IK</code> is the classic 0-RTT mutual handshake (WireGuard's base), at the cost of a
-            replayable, non-forward-secret first message.
+            <b>Need 0-RTT (data in the first message)?</b> Use a pattern whose responder is known in
+            advance, like <a class="pl" href="#p-IK">IK</a>, the standard 0-RTT mutual handshake that
+            WireGuard builds on. The cost is a first message that can be replayed and is not
+            forward-secret.
         </p>
         <p>
-            <b>Care about hiding identities?</b> <code>XX</code> and <code>XK</code> give the
-            initiator the strongest identity protection (grade 8); <code>IN</code>/<code>IK</code>
-            send it in the clear or without forward secrecy for speed.
+            <b>Care about hiding identities?</b> <a class="pl" href="#p-XX">XX</a> and
+            <a class="pl" href="#p-XK">XK</a> give the initiator the strongest identity protection
+            (grade 8). <a class="pl" href="#p-IN">IN</a> and <a class="pl" href="#p-IK">IK</a> send
+            it in the clear or without forward secrecy in exchange for speed.
         </p>
     </div>
 </div>

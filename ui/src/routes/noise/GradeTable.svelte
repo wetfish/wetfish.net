@@ -121,7 +121,7 @@
         </table>
 
         <div class="idh">
-            Identity hiding — initiator
+            Identity hiding: initiator
             <GradeBadge badge={grade.idhI} />
             · responder
             <GradeBadge badge={grade.idhR} />

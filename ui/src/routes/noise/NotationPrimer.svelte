@@ -160,8 +160,8 @@
         <div class="rule">
             <div class="k">Two-letter token</div>
             <div class="v">
-                <code>ee es se ss</code> means <b>do a Diffie–Hellman</b> — nothing is sent, a
-                shared secret is stirred into the key. First letter = initiator's key, second =
+                <code>ee es se ss</code> means <b>do a Diffie-Hellman</b>. Nothing is sent; a
+                shared secret is mixed into the key. First letter = initiator's key, second =
                 responder's.
             </div>
         </div>
@@ -217,7 +217,7 @@
         </div>
         <div class="legend-row">
             <span class="swatch sw-ss">ss</span>
-            <div class="v"><b>Static–static DH.</b> Mixes both static keys; KCI-vulnerable.</div>
+            <div class="v"><b>Static-static DH.</b> Mixes both static keys; KCI-vulnerable.</div>
         </div>
         <div class="legend-row">
             <span class="swatch swatch-pre">s</span>

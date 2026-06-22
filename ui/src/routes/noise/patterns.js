@@ -138,7 +138,7 @@ export function idh(code) {
 
 /* Short, friendly nicknames for the one-way and fundamental patterns. */
 export const NICK = {
-    N: 'Sealed sender — public-key encryption', K: 'Pre-shared sender', X: 'Self-revealing sender',
+    N: 'Sealed sender (public-key encryption)', K: 'Pre-shared sender', X: 'Self-revealing sender',
     NN: 'Unauthenticated DH', NK: 'Known responder', NX: 'Anonymous initiator',
     XN: 'Revealed initiator only', XK: 'Named initiator, known responder', XX: 'Mutual introduction',
     KN: 'Pre-shared initiator only', KK: 'Pre-shared mutual', KX: 'Pre-shared initiator, revealed responder',
@@ -147,8 +147,8 @@ export const NICK = {
 
 /* "In the wild" callouts for patterns with notable real-world deployments. */
 export const WILD = {
-    XK: 'The Lightning Network transport (BOLT #8) is built on Noise_XK.',
-    IK: 'WireGuard uses Noise_IKpsk2 — this pattern plus a pre-shared key.'
+    XK: 'The Lightning Network\u2019s transport (BOLT #8) is built on Noise_{XK}.',
+    IK: 'WireGuard uses Noise_IKpsk2, which is this pattern plus a pre-shared key.'
 };
 
 /*
@@ -158,21 +158,21 @@ export const WILD = {
  * programmatically (see deferredNote).
  */
 export const NOTES = {
-    N: 'Public-key encryption with no sender identity — anyone can encrypt to a known recipient, like libsodium\u2019s sealed boxes. <b>Strength:</b> dead simple, sender stays anonymous. <b>Pitfall:</b> zero sender authentication and the message is replayable. <b>Use</b> to encrypt files or records to a known public key.',
-    K: 'Both keys known in advance; the sender is authenticated by a static\u2013static DH. <b>Strength:</b> authenticated one-way stream with no key transmitted. <b>Pitfall:</b> the auth is KCI-vulnerable (a leaked recipient key lets an attacker forge sender messages) and there\u2019s no ephemeral forward secrecy. <b>Use</b> for pre-provisioned device telemetry.',
-    X: 'Like K, but the sender ships its static key (encrypted) instead of it being pre-known. <b>Strength:</b> the sender can be any party the recipient learns on the fly. <b>Pitfall:</b> same KCI and replay caveats as K. <b>Use</b> for encrypted submissions to a known endpoint.',
-    NN: 'Pure unauthenticated DH. <b>Strength:</b> a forward-secret channel with zero setup. <b>Pitfall:</b> no authentication at all — trivially MITM\u2019d, so it\u2019s only safe if you authenticate by some other means afterward. <b>Use</b> for testing, or as a base you layer auth onto.',
-    NK: 'Anonymous client to a server whose key you already trust (pinned). <b>Strength:</b> responder is authenticated and the client can send 0-RTT data encrypted to it. <b>Pitfall:</b> no client auth, and that 0-RTT data has no forward secrecy and is replayable. <b>Use</b> when you\u2019ve pinned a server key and the client needn\u2019t identify itself.',
-    NX: 'Anonymous client; the server reveals and proves its identity in-handshake. <b>Strength:</b> no prior key distribution, server authenticated, server identity hidden from passive eavesdroppers. <b>Pitfall:</b> no client auth, and the server\u2019s key is exposed to an active attacker who completes a handshake. <b>Use</b> for opportunistic encryption to a self-describing server.',
-    XN: 'Client proves its identity; the server stays anonymous. <b>Strength:</b> server-side anonymity with authenticated clients. <b>Pitfall:</b> the server is unauthenticated, so the client can\u2019t be sure who it\u2019s talking to. Rare on its own.',
-    XK: 'Client knows the server\u2019s key in advance and transmits its own — mutual auth against a pinned server. <b>Strength:</b> full mutual authentication with the strongest initiator identity hiding (grade 8). <b>Pitfall:</b> needs the server key out of band; no 0-RTT. The Lightning Network\u2019s transport.',
-    XX: 'The workhorse. Neither side needs prior knowledge; both transmit and prove their static keys mid-handshake. <b>Strength:</b> mutual auth, both identities encrypted, maximal flexibility — the right default when in doubt. <b>Pitfall:</b> 1.5 round trips and no 0-RTT. <b>Use</b> for general client\u2013server channels.',
-    KN: 'The server already knows the client\u2019s key; the server is anonymous. <b>Strength:</b> authenticated client without transmitting its key. <b>Pitfall:</b> server unauthenticated; the client\u2019s first reply has only weak forward secrecy until the server answers. Niche.',
-    KK: 'Both keys pre-shared; 0-RTT mutual auth. <b>Strength:</b> the fastest mutual handshake when both peers already hold each other\u2019s keys. <b>Pitfall:</b> the first message is KCI-vulnerable (source 1) and not forward-secret. <b>Use</b> for fixed pairs of peers provisioned ahead of time.',
-    KX: 'Client key pre-known; the server transmits its own. <b>Strength:</b> authenticated client, server proves identity in-band. <b>Pitfall:</b> the client\u2019s identity hiding is weak (grade 7). Niche, for asymmetric provisioning.',
-    IN: 'Client sends its static immediately, in the clear; server anonymous. <b>Strength:</b> one round trip, minimal. <b>Pitfall:</b> the client\u2019s identity is exposed to any eavesdropper (grade 0) and the server is unauthenticated. <b>Use</b> only where client privacy doesn\u2019t matter.',
-    IK: 'Client knows the server\u2019s key and sends its own immediately for 0-RTT mutual auth. <b>Strength:</b> the fastest mutual 0-RTT handshake. <b>Pitfall:</b> the client\u2019s key is encrypted only to the server\u2019s static (no forward secrecy, identity grade 4) and the first message is replayable and KCI-vulnerable. WireGuard\u2019s base pattern.',
-    IX: 'Client sends its static immediately (cleartext); the server transmits its own. <b>Strength:</b> mutual auth in one round trip with no prior key distribution. <b>Pitfall:</b> client identity is fully exposed to eavesdroppers (grade 0). <b>Use</b> where speed beats client privacy.'
+    N: 'Public-key encryption with no sender identity. Anyone can encrypt a message to a known recipient, the way libsodium\u2019s sealed boxes work. The sender stays anonymous, which also means there is no sender authentication and the message can be replayed. A fit for encrypting files or records to a known public key.',
+    K: 'Both keys are known ahead of time, and the sender is authenticated by a static-static DH, so no key is sent on the wire. The catch is that this authentication is KCI-vulnerable: if the recipient\u2019s key leaks, an attacker can forge messages from the sender. There is also no ephemeral forward secrecy. Reasonable for pre-provisioned device telemetry.',
+    X: 'Like {K}, except the sender transmits its static key (encrypted) instead of it being known in advance, so the recipient can accept a sender it learns about on the fly. The same KCI and replay caveats as {K} apply. Useful for encrypted submissions to a known endpoint.',
+    NN: 'A plain unauthenticated DH. It gives you a forward-secret channel with no setup, but neither side is authenticated, so it can be man-in-the-middled unless you authenticate some other way afterward. Mostly useful for testing, or as a base you add authentication on top of.',
+    NK: 'An anonymous client talking to a server whose key it already trusts (pinned). The server is authenticated, and the client can send encrypted data in its very first message (0-RTT). The client is not authenticated, and that first payload has no forward secrecy and can be replayed. A good fit when you have pinned a server key and the client does not need to identify itself.',
+    NX: 'An anonymous client connects, and the server sends and proves its identity during the handshake. Nothing needs to be distributed ahead of time, and the server\u2019s identity stays hidden from passive eavesdroppers. The client is not authenticated, and an active attacker who completes a handshake can learn the server\u2019s key. Suits opportunistic encryption to a server that describes itself.',
+    XN: 'The client proves its identity while the server stays anonymous. This is the uncommon case where you want authenticated clients but an anonymous server. Because the server is unauthenticated, the client cannot be sure who it is talking to. Rarely used on its own.',
+    XK: 'The client already knows the server\u2019s key and sends its own during the handshake, giving mutual authentication against a pinned server. It also gives the initiator the strongest identity protection of any pattern (grade 8). You do need the server\u2019s key out of band, and there is no 0-RTT. This is the pattern behind the Lightning Network\u2019s transport.',
+    XX: 'Neither side needs to know the other ahead of time. Both transmit and prove their static keys during the handshake, so you get mutual authentication with both identities encrypted. The cost is 1.5 round trips and no 0-RTT. If you are not sure which pattern fits a general client/server channel, this is a sensible starting point.',
+    KN: 'The server already knows the client\u2019s key, and the server itself is anonymous. The client is authenticated without sending its key, but the server is not, and the client\u2019s first reply has only weak forward secrecy until the server responds. A niche pattern.',
+    KK: 'Both keys are pre-shared, which gives 0-RTT mutual authentication and the quickest mutual handshake when both peers already hold each other\u2019s keys. The first message is KCI-vulnerable (source grade 1) and not forward-secret. Used for fixed pairs of peers that are provisioned in advance.',
+    KX: 'The client\u2019s key is known in advance, and the server transmits its own during the handshake. The client is authenticated and the server proves its identity in-band. The client\u2019s identity protection is weak (grade 7). A niche choice for asymmetric provisioning.',
+    IN: 'The client sends its static key immediately, in the clear, and the server is anonymous. It takes a single round trip, but the client\u2019s identity is visible to any eavesdropper (grade 0) and the server is not authenticated. Only worth it where client privacy does not matter.',
+    IK: 'The client knows the server\u2019s key and sends its own right away, giving 0-RTT mutual authentication and the quickest mutual 0-RTT handshake. The client\u2019s key is encrypted only to the server\u2019s static key, so it has no forward secrecy (identity grade 4), and the first message can be replayed and is KCI-vulnerable. This is the base pattern WireGuard builds on.',
+    IX: 'The client sends its static key immediately, in cleartext, and the server transmits its own during the handshake. You get mutual authentication in one round trip with nothing distributed ahead of time. The trade-off is that the client\u2019s identity is fully exposed to eavesdroppers (grade 0). A fit when speed matters more than client privacy.'
 };
 
 /* Word maps for building human-readable pattern names. */
@@ -215,15 +215,15 @@ export function deferredNote(p) {
         ? 'both parties\u2019 authenticating DHs are'
         : b.iD ? 'the initiator\u2019s authenticating DH is'
             : 'the responder\u2019s authenticating DH is';
-    let t = 'Same trust model as <code>' + base + '</code>, but ' + side + ' pushed to a later message.';
+    let t = 'Same trust model as {' + base + '}, except ' + side + ' pushed to a later message.';
     const extra = p.m.length - bp.m.length;
     if (extra > 0) {
-        t += ' That costs ' + extra + ' extra message' + (extra > 1 ? 's' : '') +
-            ' (' + p.m.length + ' total vs ' + bp.m.length + ').';
+        t += ' That adds ' + extra + ' message' + (extra > 1 ? 's' : '') +
+            ' (' + p.m.length + ' total, versus ' + bp.m.length + ' in {' + base + '}).';
     }
-    t += ' <b>Choose it</b> when you hold the responder\u2019s key but want to skip 0-RTT data, or to keep the option of swapping a DH for a signature or KEM in a future Noise extension.';
+    t += ' Reach for it when you hold the responder\u2019s key but want to skip the 0-RTT data, or when you want to keep the option of swapping a DH for a signature or KEM in a future Noise extension.';
     if (IDH_OVR[p.c]) {
-        t += ' <b>Bonus:</b> it hardens the responder\u2019s identity — probing the server\u2019s key now needs an active attacker, not a passive eavesdropper.';
+        t += ' It also hardens the responder\u2019s identity: probing the server\u2019s key now takes an active attacker rather than a passive eavesdropper.';
     }
     return t;
 }
@@ -288,10 +288,10 @@ export const TAG_TIP = {
     'responder auth': 'The responder proves its identity to the initiator (via es); the initiator stays anonymous. The purple matches the es step in the diagram.',
     'initiator auth': 'The initiator proves its identity to the responder (via se); the responder stays anonymous. The purple matches the se step in the diagram.',
     'unauthenticated': 'Neither party proves its identity, so the channel is open to an active man-in-the-middle unless you authenticate some other way.',
-    'sender auth': 'The sender proves its identity to the recipient, via a static\u2013static DH (which is KCI-vulnerable). The purple matches the authentication step in the diagram.',
-    'sender anonymous': 'The sender proves no identity \u2014 like a sealed box that anyone could have sent.',
-    '0-RTT capable': 'The initiator already knows the responder\u2019s key, so it can encrypt useful data in the very first message with no waiting round-trip. The catch: that first payload has no forward secrecy and can be replayed.',
-    'one-way': 'A single sender streams to a recipient with no reply \u2014 for files, records, or stored messages.',
+    'sender auth': 'The sender proves its identity to the recipient via a static-static DH, which is KCI-vulnerable. The purple matches the authentication step in the diagram.',
+    'sender anonymous': 'The sender proves no identity, like a sealed box that anyone could have sent.',
+    '0-RTT capable': 'The initiator already knows the responder\u2019s key, so it can encrypt useful data in the very first message with no waiting round-trip. The catch is that this first payload has no forward secrecy and can be replayed.',
+    'one-way': 'A single sender streams to a recipient with no reply, for files, records, or stored messages.',
     'deferred': 'A \u201c1\u201d variant: one side\u2019s authenticating DH is pushed to a later message, trading an extra round-trip or weaker early-payload protection for added flexibility.'
 };
 
@@ -305,16 +305,16 @@ export function pillTip(p) {
             const how = !p.enc
                 ? 'sent in the clear, because no key exists yet'
                 : (p.fs ? 'sent encrypted, with forward secrecy' : 'sent encrypted, but without forward secrecy');
-            return ['s', 'Static key: the ' + who + '\u2019s long-term identity key \u2014 ' + how + '.'];
+            return ['s', 'Static key: the ' + who + '\u2019s long-term identity key, ' + how + '.'];
         }
         case 'ee':
-            return ['ee', 'Diffie\u2013Hellman between the two ephemeral keys. Provides forward secrecy. Nothing is transmitted \u2014 a shared secret is mixed into the key.'];
+            return ['ee', 'Diffie-Hellman between the two ephemeral keys. Provides forward secrecy. Nothing is transmitted; a shared secret is mixed into the key.'];
         case 'es':
-            return ['es', 'Diffie\u2013Hellman between the initiator\u2019s ephemeral and the responder\u2019s static key. Authenticates the responder.'];
+            return ['es', 'Diffie-Hellman between the initiator\u2019s ephemeral and the responder\u2019s static key. Authenticates the responder.'];
         case 'se':
-            return ['se', 'Diffie\u2013Hellman between the initiator\u2019s static and the responder\u2019s ephemeral key. Authenticates the initiator.'];
+            return ['se', 'Diffie-Hellman between the initiator\u2019s static and the responder\u2019s ephemeral key. Authenticates the initiator.'];
         case 'ss':
-            return ['ss', 'Diffie\u2013Hellman between both static keys. Adds confidentiality but is KCI-vulnerable. Nothing is transmitted.'];
+            return ['ss', 'Diffie-Hellman between both static keys. Adds confidentiality but is KCI-vulnerable. Nothing is transmitted.'];
         case 'psk':
             return ['psk', 'Mixes the pre-shared key into both the encryption key and the transcript hash.'];
         default:
@@ -322,34 +322,34 @@ export function pillTip(p) {
     }
 }
 
-/* Source-authentication grade tooltips (0\u20132). */
+/* Source-authentication grade tooltips (0 to 2). */
 export const SRC_TIP = {
-    0: 'No authentication \u2014 this payload could have been sent by anyone, including an active attacker.',
-    1: 'Authenticated, but vulnerable to key-compromise impersonation: based on a static\u2013static DH, so it can be forged by anyone who steals the recipient\u2019s static key.',
-    2: 'Authenticated and KCI-resistant \u2014 based on an ephemeral\u2013static DH (es or se) that cannot be forged.'
+    0: 'No authentication, so this payload could have been sent by anyone, including an active attacker.',
+    1: 'Authenticated, but vulnerable to key-compromise impersonation: it is based on a static-static DH, so anyone who steals the recipient\u2019s static key can forge it.',
+    2: 'Authenticated and KCI-resistant, based on an ephemeral-static DH (es or se) that cannot be forged.'
 };
 
-/* Destination-confidentiality grade tooltips (0\u20135). */
+/* Destination-confidentiality grade tooltips (0 to 5). */
 export const DST_TIP = {
-    0: 'No confidentiality \u2014 sent in cleartext.',
+    0: 'No confidentiality; sent in cleartext.',
     1: 'Encrypted with forward secrecy, but the recipient isn\u2019t authenticated, so it might be received by an active attacker.',
     2: 'Encrypted to the recipient\u2019s static key only: no forward secrecy, and the message can be replayed.',
-    3: 'Weak forward secrecy \u2014 the recipient\u2019s ephemeral key isn\u2019t bound to its identity, so an active attacker could forge it and later decrypt.',
+    3: 'Weak forward secrecy: the recipient\u2019s ephemeral key isn\u2019t bound to its identity, so an active attacker could forge it and later decrypt.',
     4: 'Weak forward secrecy only if the sender\u2019s own static key was previously compromised; otherwise strong.',
     5: 'Strong forward secrecy to a fully authenticated recipient.'
 };
 
 /* Identity-hiding grade tooltips (categorical). */
 export const IDH_TIP = {
-    0: 'Sent in clear \u2014 visible to any eavesdropper.',
+    0: 'Sent in clear, visible to any eavesdropper.',
     1: 'Encrypted with forward secrecy, but an anonymous initiator can probe for this key.',
     2: 'Encrypted with forward secrecy, but sent to an anonymous responder.',
     3: 'Not transmitted, but a passive attacker can test guesses for the responder\u2019s private key (and link repeated runs to the same responder).',
-    4: 'Encrypted to the responder\u2019s static key without forward secrecy \u2014 a leaked responder key reveals it.',
+    4: 'Encrypted to the responder\u2019s static key without forward secrecy, so a leaked responder key reveals it.',
     5: 'Not transmitted, but a passive attacker can test guesses for the (responder key, initiator key) pair.',
     6: 'Encrypted, but with weak forward secrecy: an active attacker posing as the initiator who later learns the initiator\u2019s key can decrypt it.',
     7: 'Not transmitted, but an active attacker posing as the initiator who later learns the initiator\u2019s key can test guesses for it.',
-    8: 'Encrypted with forward secrecy to an authenticated party \u2014 the strongest protection.',
+    8: 'Encrypted with forward secrecy to an authenticated party, the strongest protection.',
     9: 'Not transmitted; only an active attacker who poses as the initiator and records a full run can test guesses for the responder\u2019s key.'
 };
 
@@ -365,11 +365,11 @@ function describe(p, an) {
 
     if (p.g === 'oneway') {
         if (p.c === 'N') {
-            verdict = 'Anonymous sender encrypts to a known recipient — like a sealed box.';
+            verdict = 'Anonymous sender encrypts to a known recipient, like a sealed box.';
             authTag = 'sender anonymous';
             authClass = 'auth-none';
         } else {
-            verdict = 'Sender authenticated via a static\u2013static DH (KCI-vulnerable).';
+            verdict = 'Sender authenticated via a static-static DH, which is KCI-vulnerable.';
             authTag = 'sender auth';
             authClass = 'auth-one';
         }
@@ -378,13 +378,13 @@ function describe(p, an) {
         if (ra && ia) { verdict = 'Mutual authentication.'; authTag = 'mutual auth'; authClass = 'auth-mutual'; }
         else if (ra) { verdict = 'Responder authenticated; initiator stays anonymous.'; authTag = 'responder auth'; authClass = 'auth-one'; }
         else if (ia) { verdict = 'Initiator authenticated; responder stays anonymous.'; authTag = 'initiator auth'; authClass = 'auth-one'; }
-        else { verdict = 'No authentication — open to active attackers.'; authTag = 'unauthenticated'; authClass = 'auth-none'; }
+        else { verdict = 'No authentication, so the channel is open to active attackers.'; authTag = 'unauthenticated'; authClass = 'auth-none'; }
     }
 
     const li = [];
     if (p.g === 'oneway') {
         li.push('Recipient\u2019s key is <b>known in advance</b>; one-way channel (no reply).');
-        li.push('No ephemeral\u2013ephemeral DH, so <b>limited forward secrecy</b>.');
+        li.push('No ephemeral-ephemeral DH, so <b>limited forward secrecy</b>.');
         if (p.c === 'X') li.push('Sender\u2019s key is <b>' + fsNote(an.iStat) + '</b>.');
     } else {
         if (an.eeMsg) li.push('Forward secrecy from <b>message ' + an.eeMsg + '</b> (ee).');
@@ -398,7 +398,7 @@ function describe(p, an) {
             : (p.pre.some((x) => x[0] === B) ? 'known to the initiator in advance, never sent' : fsNote(an.rStat));
         if (iId) li.push('Initiator identity: <b>' + iId + '</b>.');
         if (rId) li.push('Responder identity: <b>' + rId + '</b>.');
-        if (an.ss) li.push('Includes a <b>static\u2013static DH</b> (ss) — extra confidentiality, KCI-vulnerable.');
+        if (an.ss) li.push('Includes a <b>static-static DH</b> (ss) for extra confidentiality, though it is KCI-vulnerable.');
     }
 
     const tags = [
@@ -475,6 +475,22 @@ function gradeData(p) {
     return { rows, idhI: badge('idh', id[0]), idhR: badge('idh', id[1]) };
 }
 
+/* Pattern codes that have a card on the page (used to validate links). */
+const PATTERN_SET = new Set(P.map((x) => x.c));
+
+/*
+ * Expand {CODE} markers in trusted copy into anchor links to that pattern's
+ * card, e.g. {XK} becomes <a class="pl" href="#p-XK">XK</a>. Codes without a
+ * card are left as plain text. Applied to the prose rendered with {@html}.
+ */
+export function expandLinks(html) {
+    return html.replace(/\{([A-Za-z0-9]+)\}/g, (m, code) =>
+        PATTERN_SET.has(code)
+            ? '<a class="pl" href="#p-' + code + '">' + code + '</a>'
+            : code
+    );
+}
+
 /*
  * Assemble the full view-model for one pattern card. Note the raw pattern (p)
  * and its analysis (an) are passed through so the card can hand them to the
@@ -485,12 +501,17 @@ export function buildCard(p) {
     const an = analyse(p);
     const d = describe(p, an);
     const nk = NICK[p.c] || null;
-    const wild = WILD[p.c] || null;
-    const note = NOTES[p.c] || deferredNote(p);
+    const rawNote = NOTES[p.c] || deferredNote(p);
+    const rawWild = WILD[p.c] || null;
+
+    const note = expandLinks(rawNote);
+    const wild = rawWild ? expandLinks(rawWild) : null;
     const tags = d.tags.map(tagInfo);
+
+    // Search index: plain text, with HTML tags and {code} markers stripped.
     const blob = (p.c + ' ' + descName(p) + ' ' + (nk || '') + ' ' + d.verdict + ' ' +
-        d.tags.map((t) => t.text).join(' ') + ' ' + note)
-        .toLowerCase().replace(/<[^>]+>/g, '');
+        d.tags.map((t) => t.text).join(' ') + ' ' + rawNote)
+        .toLowerCase().replace(/<[^>]+>/g, '').replace(/[{}]/g, '');
 
     return {
         c: p.c, g: p.g, p, an,
@@ -507,7 +528,7 @@ export function buildCard(p) {
 
 /* The three sections rendered on the page, in order. */
 export const SECT = [
-    { g: 'oneway', t: 'One-way patterns', d: 'A single sender streams to a recipient — files, records, sealed messages.' },
+    { g: 'oneway', t: 'One-way patterns', d: 'A single sender streams to a recipient: files, records, or sealed messages.' },
     { g: 'fundamental', t: 'Fundamental interactive patterns', d: 'The 12 core handshakes. Initiator is N / K / X / I; responder is N / K / X.' },
     { g: 'deferred', t: 'Deferred patterns', d: 'A \u201c1\u201d pushes one side\u2019s authenticating DH to a later message.' }
 ];
@@ -522,9 +543,9 @@ export const FILTERS = [
 
 /* Worked pre-shared-key examples shown in the PSK section. */
 export const PSKEX = [
-    { c: 'NNpsk0', pre: [], m: [[A, ['psk', 'e']], [B, ['e', 'ee']]], cap: '<b>NNpsk0</b> — psk opens message 1' },
-    { c: 'XXpsk3', pre: [], m: [[A, ['e']], [B, ['e', 'ee', 's', 'es']], [A, ['s', 'se', 'psk']]], cap: '<b>XXpsk3</b> — psk at the end of message 3' },
-    { c: 'IKpsk2', pre: [[B, ['s']]], m: [[A, ['e', 'es', 's', 'ss']], [B, ['e', 'ee', 'se', 'psk']]], cap: '<b>IKpsk2</b> — WireGuard\u2019s pattern, psk ending message 2' }
+    { c: 'NNpsk0', pre: [], m: [[A, ['psk', 'e']], [B, ['e', 'ee']]], cap: '<b>NNpsk0</b>: psk opens message 1' },
+    { c: 'XXpsk3', pre: [], m: [[A, ['e']], [B, ['e', 'ee', 's', 'es']], [A, ['s', 'se', 'psk']]], cap: '<b>XXpsk3</b>: psk at the end of message 3' },
+    { c: 'IKpsk2', pre: [[B, ['s']]], m: [[A, ['e', 'es', 's', 'ss']], [B, ['e', 'ee', 'se', 'psk']]], cap: '<b>IKpsk2</b>: WireGuard\u2019s pattern, with psk ending message 2' }
 ];
 
 /* The fully-built card view-models, ready to render. */
