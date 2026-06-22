@@ -1,27 +1,22 @@
+<!--
+    Root layout — intentionally bare.
+
+    The global site chrome (TopNav, Menu, Blobs) lives in the (app) route
+    group instead, so the marketing site keeps its full-size navigation while
+    routes outside that group — like /noise — can render their own chrome.
+
+    Route groups (folders wrapped in parentheses) don't affect the URL, so
+    every existing path (/, /community, /business, /nature) is unchanged.
+
+    Global styles and prerendering are configured in +layout.ts, which stays
+    at the root so they apply to every page, including those outside (app).
+-->
 <script lang="ts">
-    import TopNav from '$lib/components/TopNav.svelte';
-    import Menu from '$lib/components/Menu.svelte';
-    import Blobs from '$lib/components/Blobs.svelte';
-	import { menuStore } from '$lib/store.js';
-	interface Props {
-		children?: import('svelte').Snippet;
-	}
+    interface Props {
+        children?: import('svelte').Snippet;
+    }
 
-	let { children }: Props = $props();
-
-	let menuIsOpen = $state();
-
-	menuStore.subscribe((value) => {
-		menuIsOpen = value;
-	});
+    let { children }: Props = $props();
 </script>
 
-{#if menuIsOpen}
-    <Menu />
-{/if}
-
-<TopNav />
-
 {@render children?.()}
-
-<Blobs />
