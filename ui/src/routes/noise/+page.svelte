@@ -262,7 +262,7 @@
     .bar-inner {
         max-width: 1180px;
         margin: 0 auto;
-        padding: 10px 24px;
+        padding: 10px 15px;
 
         display: flex;
         align-items: center;
@@ -331,7 +331,8 @@
         font-weight: 400;
     }
 
-    @media (max-width: 640px) {
+    /* Hide the brand label until the single row is wide enough to carry it. */
+    @media (max-width: 1023px) {
         .brand {
             display: none;
         }
@@ -396,6 +397,48 @@
             grid-column: 3;
             justify-self: end;
             padding-right: 24px;
+        }
+    }
+
+    /*
+     * Mobile layout: stack the bar into two rows. The logo and menu sit on top
+     * (site chrome), and the filter chips + search drop to a full-width second
+     * row below. flex-wrap plus order does the stacking; flex-basis:100% on the
+     * tools group forces the wrap. The logo's desktop overflow is dropped here
+     * so its descender can't spill onto the controls in the row beneath it.
+     */
+    @media (max-width: 820px) {
+        .bar-inner {
+            flex-wrap: wrap;
+            gap: 10px 14px;
+        }
+
+        .bar-logo {
+            order: 1;
+            align-self: center;
+        }
+
+        .bar-logo img {
+            height: 52px;
+            margin-bottom: 0;
+        }
+
+        .menu-slot {
+            order: 2;
+            margin-left: auto;
+        }
+
+        .bar-center {
+            order: 3;
+            flex-basis: 100%;
+        }
+
+        .bar-tools {
+            margin-left: 0;
+        }
+
+        .nref-search {
+            flex: 1 1 160px;
         }
     }
 

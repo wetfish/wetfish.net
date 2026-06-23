@@ -30,6 +30,17 @@
         color: var(--ink);
     }
 
+    /*
+     * The forced break gives a deliberate two-line headline on desktop. On
+     * narrow screens the first line wraps on its own, so the extra break reads
+     * awkwardly; drop it there and let the headline flow as one sentence.
+     */
+    @media (max-width: 640px) {
+        .hero h1 .hb {
+            display: none;
+        }
+    }
+
     .lead {
         max-width: 64ch;
         margin: 0 0 14px;
@@ -55,7 +66,7 @@
 
 <section class="hero">
     <p class="eyebrow">A visual reference</p>
-    <h1>The Noise handshake patterns,<br />one diagram at a time.</h1>
+    <h1>The Noise handshake patterns, <br class="hb" />one diagram at a time.</h1>
 
     <p class="lead">
         The Noise Protocol Framework is a toolkit for building encrypted connections. It is what
