@@ -15,6 +15,7 @@
     import { tick } from 'svelte';
     import MenuButton from '$lib/components/MenuButton.svelte';
     import Menu from '$lib/components/Menu.svelte';
+    import Seo from '$lib/components/Seo.svelte';
     import logo from '$lib/images/wetfish-logo.png';
     import { menuStore } from '$lib/store.js';
 
@@ -142,13 +143,11 @@
     }
 </script>
 
-<svelte:head>
-    <title>Noise handshake patterns · Wetfish</title>
-    <meta
-        name="description"
-        content="A visual reference for all 38 Noise Protocol handshake patterns: sequence diagrams, plain-English names, security grades, and when to use each."
-    />
-</svelte:head>
+<Seo
+    title="Noise handshake patterns · Wetfish"
+    description="A visual reference for all 38 Noise Protocol handshake patterns: sequence diagrams, plain-English names, security grades, and when to use each."
+    path="/noise"
+/>
 
 <style>
     .noise-ref {

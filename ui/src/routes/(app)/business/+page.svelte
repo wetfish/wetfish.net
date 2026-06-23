@@ -1,6 +1,8 @@
-<svelte:head>
-    <title>Business Automation & Software Development Services — Wetfish</title>
-</svelte:head>
+<Seo
+    title="Business Automation & Software Development Services — Wetfish"
+    description="Custom software and hardware development: web and mobile apps, CAD product design, and embedded Linux systems. We automate tedious workflows for startups and established businesses alike."
+    path="/business"
+/>
 
 <style lang="scss">
     .business {
@@ -229,6 +231,7 @@
 </style>
 
 <script>
+    import Seo from '$lib/components/Seo.svelte';
     import DisappearingContent from "$lib/components/DisappearingContent.svelte";
     import Accordion from '$lib/components/Accordion.svelte';
     import Blob from '$lib/components/Blob.svelte';

@@ -1,6 +1,8 @@
-<svelte:head>
-    <title>Nature Conservation & Habitat Restoration — Wetfish</title>
-</svelte:head>
+<Seo
+    title="Nature Conservation & Habitat Restoration — Wetfish"
+    description="Restoring land degraded by human activity across more than 1,000 acres in North America: planting trees, building wetlands, sequestering carbon, and using low-tech techniques to bring water back to the land."
+    path="/nature"
+/>
 
 <style lang="scss">
     .content-background {
@@ -158,6 +160,7 @@
 </style>
 
 <script>
+    import Seo from '$lib/components/Seo.svelte';
     import DisappearingContent from "$lib/components/DisappearingContent.svelte";
     import Accordion from '$lib/components/Accordion.svelte';
     import Blob from '$lib/components/Blob.svelte';

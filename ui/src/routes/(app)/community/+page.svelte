@@ -1,6 +1,8 @@
-<svelte:head>
-    <title>Cyberpunk Internet Community — Wetfish</title>
-</svelte:head>
+<Seo
+    title="Cyberpunk Internet Community — Wetfish"
+    description="A self-hosted network of open-source projects built since 2005: wiki, forum, file hosting, video streaming, and chat. We're hackers, farmers, researchers, and artists, spread across the globe but digitally united."
+    path="/community"
+/>
 
 <style lang="scss">
     .community {
@@ -248,6 +250,7 @@
 </style>
 
 <script>
+    import Seo from '$lib/components/Seo.svelte';
     import DisappearingContent from "$lib/components/DisappearingContent.svelte";
     import Accordion from '$lib/components/Accordion.svelte';
     import Blob from '$lib/components/Blob.svelte';
