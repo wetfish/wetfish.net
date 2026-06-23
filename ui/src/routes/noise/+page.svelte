@@ -57,14 +57,40 @@
     let barEl = $state(null);
     let resultsEl = $state(null);
 
-    async function selectFilter(value) {
-        curFilter = value;
-        // Wait for the grid to re-render with the new filter before measuring.
-        await tick();
+    /* Smooth-scroll the results list up to just under the sticky bar. */
+    function scrollToResults() {
         if (!resultsEl) return;
         const barHeight = barEl ? barEl.offsetHeight : 64;
         const top = resultsEl.getBoundingClientRect().top + window.scrollY - barHeight - 12;
         window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    }
+
+    async function selectFilter(value) {
+        curFilter = value;
+        // Wait for the grid to re-render with the new filter before measuring.
+        await tick();
+        scrollToResults();
+    }
+
+    /*
+     * When the user types in the search box, bring the results into view so it
+     * is obvious something happened, especially on mobile where the list sits
+     * well below the hero and intro sections. Debounced so it fires after a
+     * pause in typing rather than on every keystroke, and skipped when the list
+     * is already on screen so it does not yank a user who has scrolled down to
+     * refine their search.
+     */
+    let searchScrollTimer;
+    function onSearchInput() {
+        clearTimeout(searchScrollTimer);
+        searchScrollTimer = setTimeout(async () => {
+            await tick();
+            if (!resultsEl) return;
+            const barHeight = barEl ? barEl.offsetHeight : 64;
+            if (resultsEl.getBoundingClientRect().top > barHeight + 12) {
+                scrollToResults();
+            }
+        }, 300);
     }
 
     /* Smooth-scroll to an element id, leaving room for the sticky bar. */
@@ -554,6 +580,7 @@
                         type="search"
                         placeholder="filter… e.g. XK, mutual"
                         bind:value={curQuery}
+                        oninput={onSearchInput}
                         aria-label="Search patterns"
                     />
                 </div>
