@@ -1,0 +1,6 @@
+# Local development only. `docker compose up` reads this file automatically;
+# server deploys leave it out.
+services:
+  nginx:
+    ports:
+      - "127.0.0.1:31337:80"
