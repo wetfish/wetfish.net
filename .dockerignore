@@ -1,0 +1,13 @@
+# Keep the build context small, and keep secrets out of images: they reach
+# containers at run time, never at build time
+.git
+.github
+**/.env
+**/.env.*
+**/*.env
+
+# Rebuilt inside the image
+ui/node_modules
+ui/.svelte-kit
+ui/public_html
+ui/build
