@@ -8,10 +8,18 @@
     Route groups (folders wrapped in parentheses) don't affect the URL, so
     every existing path (/, /community, /business, /nature) is unchanged.
 
-    Global styles and prerendering are configured in +layout.ts, which stays
-    at the root so they apply to every page, including those outside (app).
+    Global styles are imported here, and prerendering is configured in
+    +layout.ts, both at the root so they apply to every page, including those
+    outside (app).
+
+    Import global styles from this component, not from +layout.ts: SvelteKit
+    only links a stylesheet in the prerendered HTML when it can match it to a
+    layout or page component. Otherwise JavaScript loads it after the page
+    appears, which briefly shows the page unstyled and without its fonts.
 -->
 <script lang="ts">
+    import '$lib/css/global.scss';
+
     interface Props {
         children?: import('svelte').Snippet;
     }
