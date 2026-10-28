@@ -364,21 +364,11 @@
     }
 
     /*
-     * The shared MenuButton is built for the dark theme: it paints its glyph
-     * white (invisible on this light bar) and pins its height to 32px. Under
-     * this page's border-box reset, that 32px ends up including the padding and
-     * border, which squashes the ≡ glyph. Recolor it and let it size to its
-     * own content so the glyph sits centered with room to breathe.
+     * The shared MenuButton is built for the dark theme: it paints its icon
+     * white, which is invisible on this light bar, so recolor it.
      */
     :global(.noise-ref .bar .menu-button) {
         color: var(--ink);
-        height: auto !important;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-        font-size: 24px;
-        padding: 8px 10px;
     }
 
     .bar-tools {
